@@ -195,9 +195,19 @@
     <Compile Include="Migrations\202207131459575_staff.designer.cs">
       <DependentUpon>202207131459575_staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207131620235_Department.cs" />
+    <Compile Include="Migrations\202207131620235_Department.designer.cs">
+      <DependentUpon>202207131620235_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207131623198_Career.cs" />
+    <Compile Include="Migrations\202207131623198_Career.designer.cs">
+      <DependentUpon>202207131623198_Career.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Career.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -283,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207131459575_staff.resx">
       <DependentUpon>202207131459575_staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131620235_Department.resx">
+      <DependentUpon>202207131620235_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131623198_Career.resx">
+      <DependentUpon>202207131623198_Career.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

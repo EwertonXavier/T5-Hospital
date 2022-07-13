@@ -31,5 +31,7 @@ namespace T5_Hospital.Models
         }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Staff> Staff { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Career> Careers { get; set; }
     }
 }
