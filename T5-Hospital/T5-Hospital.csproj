@@ -207,6 +207,10 @@
     <Compile Include="Migrations\202207131725129_News.designer.cs">
       <DependentUpon>202207131725129_News.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207131734121_Service.cs" />
+    <Compile Include="Migrations\202207131734121_Service.designer.cs">
+      <DependentUpon>202207131734121_Service.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -215,6 +219,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -307,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207131725129_News.resx">
       <DependentUpon>202207131725129_News.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131734121_Service.resx">
+      <DependentUpon>202207131734121_Service.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

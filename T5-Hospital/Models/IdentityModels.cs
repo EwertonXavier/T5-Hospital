@@ -34,5 +34,6 @@ namespace T5_Hospital.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<Career> Careers { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Service> Services { get; set; }
     }
 }
