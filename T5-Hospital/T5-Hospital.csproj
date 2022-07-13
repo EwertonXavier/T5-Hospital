@@ -191,11 +191,16 @@
     <Compile Include="Migrations\202207131352404_Appointment.designer.cs">
       <DependentUpon>202207131352404_Appointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207131459575_staff.cs" />
+    <Compile Include="Migrations\202207131459575_staff.designer.cs">
+      <DependentUpon>202207131459575_staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +280,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207131352404_Appointment.resx">
       <DependentUpon>202207131352404_Appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131459575_staff.resx">
+      <DependentUpon>202207131459575_staff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,5 +30,6 @@ namespace T5_Hospital.Models
             return new ApplicationDbContext();
         }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Staff> Staff { get; set; }
     }
 }
