@@ -35,5 +35,7 @@ namespace T5_Hospital.Models
         public DbSet<Career> Careers { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Donor> Donors { get; set; }
+        public DbSet<Donation> Donations { get; set; }
     }
 }
