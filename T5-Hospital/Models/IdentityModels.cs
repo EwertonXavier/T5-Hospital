@@ -33,6 +33,7 @@ namespace T5_Hospital.Models
         public DbSet<Staff> Staff { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Career> Careers { get; set; }
+        public DbSet<Patient> Patients { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Donor> Donors { get; set; }
