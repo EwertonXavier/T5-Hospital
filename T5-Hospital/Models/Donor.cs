@@ -15,6 +15,6 @@ namespace T5_Hospital.Models
         public string DonorEmail { get; set; }
         public string DonorPhone { get; set; }
 
-        public ICollection<Donation> Donations { get; set; }
+        //public ICollection<Donation> Donations { get; set; }
     }
 }
