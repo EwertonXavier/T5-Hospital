@@ -211,11 +211,21 @@
     <Compile Include="Migrations\202207131734121_Service.designer.cs">
       <DependentUpon>202207131734121_Service.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207141655497_DonorAndDonation.cs" />
+    <Compile Include="Migrations\202207141655497_DonorAndDonation.designer.cs">
+      <DependentUpon>202207141655497_DonorAndDonation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207141901019_ChangeDonation.cs" />
+    <Compile Include="Migrations\202207141901019_ChangeDonation.designer.cs">
+      <DependentUpon>202207141901019_ChangeDonation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Donation.cs" />
+    <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\News.cs" />
@@ -315,6 +325,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207131734121_Service.resx">
       <DependentUpon>202207131734121_Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207141655497_DonorAndDonation.resx">
+      <DependentUpon>202207141655497_DonorAndDonation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207141901019_ChangeDonation.resx">
+      <DependentUpon>202207141901019_ChangeDonation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
