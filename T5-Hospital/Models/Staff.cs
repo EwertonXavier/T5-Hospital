@@ -21,4 +21,17 @@ namespace T5_Hospital.Models
         public virtual Department Department { get; set; }
 
     }
+
+    public class StaffDto
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
+        public string DepartmentDescription { get; set; }
+
+    }
+
 }
