@@ -237,6 +237,14 @@
     <Compile Include="Migrations\202207150032464_VisitationVisitor_FK.designer.cs">
       <DependentUpon>202207150032464_VisitationVisitor_FK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207151553367_Staff_FK.cs" />
+    <Compile Include="Migrations\202207151553367_Staff_FK.designer.cs">
+      <DependentUpon>202207151553367_Staff_FK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207151558053_Appointment_fk.cs" />
+    <Compile Include="Migrations\202207151558053_Appointment_fk.designer.cs">
+      <DependentUpon>202207151558053_Appointment_fk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -367,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207150032464_VisitationVisitor_FK.resx">
       <DependentUpon>202207150032464_VisitationVisitor_FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207151553367_Staff_FK.resx">
+      <DependentUpon>202207151553367_Staff_FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207151558053_Appointment_fk.resx">
+      <DependentUpon>202207151558053_Appointment_fk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
