@@ -1,0 +1,6 @@
+﻿{
+  "ServiceId": "4" ,
+  "DepartmentId": "1",
+  "ServiceName": "Update Service Through commend line",
+  "ServiceDetail": "update service 123"
+}

@@ -17,4 +17,14 @@ namespace T5_Hospital.Models
         public string ServiceName { get; set; }
         public string ServiceDetail { get; set; }
     }
+
+    public class ServiceDto
+    {
+        public int ServiceId { get; set; }
+        public string ServiceName { get; set; }
+        public string ServiceDetail { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
+        public string DepartmentDescription { get; set; }
+    }
 }
