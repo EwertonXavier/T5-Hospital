@@ -44,7 +44,7 @@ namespace T5_Hospital.Controllers
         /// <example>GET api/VisitorData/FindVisitor/5</example>
         /// <returns>VisitorDto object</returns>
         [HttpGet]
-        [ResponseType(typeof(Visitor))]
+        [ResponseType(typeof(VisitorDto))]
         public IHttpActionResult FindVisitor(int id)
         {
             Visitor Visitor = db.Visitors.Find(id);
