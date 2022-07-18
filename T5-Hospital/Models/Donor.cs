@@ -17,4 +17,15 @@ namespace T5_Hospital.Models
 
         //public ICollection<Donation> Donations { get; set; }
     }
+
+    public class DonorDto
+    {
+        public int DonorId { get; set; }
+        public string DonorFirstName { get; set; }
+        public string DonorLastName { get; set; }
+        public string DonorEmail { get; set; }
+        public string DonorPhone { get; set; }
+    }
+
+
 }

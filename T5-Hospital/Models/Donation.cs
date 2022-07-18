@@ -20,4 +20,16 @@ namespace T5_Hospital.Models
         public virtual Donor Donor { get; set; }
 
     }
-}
+
+    public class DonationDto
+    {
+        public int DonationId { get; set; }
+        public decimal DonationAmount { get; set; }
+        public DateTime DonationDate { get; set; }
+        public string DonationDescription { get; set; }
+
+        public int DonorId { get; set; }
+        public string DonorFirstName { get; set; }
+        public string DonorLastName { get; set; }
+    }
+    }

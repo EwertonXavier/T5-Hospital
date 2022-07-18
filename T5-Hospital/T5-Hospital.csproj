@@ -180,6 +180,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DonationDataController.cs" />
+    <Compile Include="Controllers\DonorDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsDataController.cs" />
@@ -275,6 +277,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\donor.json" />
+    <None Include="jsondata\donation.json" />
     <Content Include="jsondata\updatestaff.json" />
     <Content Include="jsondata\news.json" />
     <Content Include="jsondata\services.json" />
