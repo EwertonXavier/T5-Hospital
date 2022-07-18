@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsDataController.cs" />
+    <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\ServiceDataController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -282,9 +283,11 @@
     <Content Include="jsondata\updatestaff.json" />
     <Content Include="jsondata\news.json" />
     <Content Include="jsondata\services.json" />
+    <Content Include="jsondata\new-patient.json" />
     <None Include="jsondata\newstaff.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="jsondata\update-patient.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
