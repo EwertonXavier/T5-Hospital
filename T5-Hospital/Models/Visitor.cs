@@ -13,4 +13,10 @@ namespace T5_Hospital.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
+    public class VisitorDto
+    {
+        public int VisitorId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
 }
