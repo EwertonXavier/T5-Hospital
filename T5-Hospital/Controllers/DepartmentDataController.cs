@@ -59,7 +59,7 @@ namespace T5_Hospital.Controllers
                 DepartmentDescription = department.Description
             };
 
-            return Ok(department);
+            return Ok(departmentDto);
 
         }
 
