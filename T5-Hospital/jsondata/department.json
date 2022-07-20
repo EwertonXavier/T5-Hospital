@@ -1,0 +1,5 @@
+﻿{
+  "DepartmentId": 3,
+  "Name": "Psychology",
+  "Description": "Test update department using json input"
+}

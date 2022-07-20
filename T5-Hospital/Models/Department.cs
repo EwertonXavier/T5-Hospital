@@ -13,4 +13,11 @@ namespace T5_Hospital.Models
         public string Name { get; set; }
         public string Description { get; set; }
     }
+
+    public class DepartmentDto
+    {
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
+        public string DepartmentDescription { get; set; }
+    }
 }
