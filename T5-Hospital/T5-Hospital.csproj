@@ -180,6 +180,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentDataController.cs" />
     <Compile Include="Controllers\DonationDataController.cs" />
     <Compile Include="Controllers\DonorDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -288,6 +289,8 @@
     <Content Include="jsondata\new-patient.json" />
     <Content Include="jsondata\new-visitor.json" />
     <Content Include="jsondata\new-visitation.json" />
+    <Content Include="jsondata\new-appointment.json" />
+    <Content Include="jsondata\update-appointment.json" />
     <None Include="jsondata\newstaff.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
