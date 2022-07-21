@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentDataController.cs" />
+    <Compile Include="Controllers\CareerDataController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
     <Compile Include="Controllers\DonationDataController.cs" />
@@ -284,6 +285,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="jsondata\career.json" />
     <None Include="jsondata\donor.json" />
     <None Include="jsondata\donation.json" />
     <Content Include="jsondata\updatestaff.json" />

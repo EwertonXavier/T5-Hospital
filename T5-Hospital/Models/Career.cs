@@ -21,4 +21,16 @@ namespace T5_Hospital.Models
 
 
     }
+
+    public class CareerDto
+    {
+        public int JobId { get; set; }
+        public string JobTitle { get; set; }
+        public string JobDescription { get; set; }
+        public int Experience_In_Years { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
+        public string DepartmentDescription { get; set; }
+
+    }
 }
