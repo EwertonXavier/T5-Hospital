@@ -1,0 +1,44 @@
+﻿@model T5_Hospital.Models.DonorDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Donor Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">First Name</div>
+                        <div class="col-sm-8">@Model.DonorFirstName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Last Name</div>
+                        <div class="col-sm-8">@Model.DonorLastName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Email address</div>
+                        <div class="col-sm-8">@Model.DonorEmail</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Phone number</div>
+                        <div class="col-sm-8">@Model.DonorPhone</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <a class="btn btn-info" href="/Donor/Edit/@Model.DonorId" role="button">Update</a>
+    <a class="btn btn-danger" href="/Donor/Remove/@Model.DonorId" role="button">Delete</a>
+</div>
+
+<div class="col-md-12 text-center">
+    <a class="primary-light" href="/Donor/List">Back to list</a>
+</div>

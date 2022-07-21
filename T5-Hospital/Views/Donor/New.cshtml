@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="text-center">New Donor</h2>
+        <form class="form-horizontal" action="/Donor/Create" method="POST">
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="donorFirstName">First Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="donorFirstName" name="donorFirstName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="donorLastName">Last Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="donorLastName" name="donorLastName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="donorEmail">Email</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="email" id="donorEmail" name="donorEmail">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="donorPhone">Phone number</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="tel" id="donorPhone" name="donorPhone">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button class="btn btn-default" type="submit">Add Donor</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
