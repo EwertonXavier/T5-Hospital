@@ -193,6 +193,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsDataController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\ServiceDataController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
     <Compile Include="Controllers\VisitationDataController.cs" />
@@ -368,6 +369,12 @@
     <Content Include="Views\News\Error.cshtml" />
     <Content Include="Views\News\New.cshtml" />
     <Content Include="Views\News\Remove.cshtml" />
+    <Content Include="Views\Service\Remove.cshtml" />
+    <Content Include="Views\Service\New.cshtml" />
+    <Content Include="Views\Service\List.cshtml" />
+    <Content Include="Views\Service\Error.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Service\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

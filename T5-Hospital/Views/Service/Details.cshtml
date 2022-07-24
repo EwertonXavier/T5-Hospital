@@ -1,0 +1,20 @@
+﻿@model T5_Hospital.Models.ServiceDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <a class="btn btn-default" href="/Service/List">Go back</a>
+</div>
+<div>
+    <a class="btn btn-primary" href="/Service/Edit/@Model.ServiceId">Edit</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="/Service/Remove/@Model.ServiceId">Remove</a>
+</div>
+<p>Service: @Model.ServiceName</p>
+<p>Service Details: @Model.ServiceDetail</p>
+<p>Department: @Model.DepartmentName</p>
+
+

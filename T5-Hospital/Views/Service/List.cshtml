@@ -1,0 +1,40 @@
+﻿@model IEnumerable<T5_Hospital.Models.ServiceDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div>
+    <a class="btn btn-primary" href="/Service/New">Add Service</a>
+</div>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Service Name</th>
+            <th class="text-center">Service Details</th>
+            <th class="text-center">Department</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+        <tr>
+            <td>@service.ServiceName</td>
+            <td>@service.ServiceDetail</td>
+            <td>@service.DepartmentName</td>
+            <td>
+                <a href="/Service/Details/@service.ServiceId">Details</a>
+            </td>
+            <td>
+                <a href="/Service/Remove/@service.ServiceId">Remove</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

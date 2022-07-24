@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add Service</h2>
+<form method="post" action="/Service/Create">
+    <div>
+        <label for="serviceName">Service Name</label>
+        <input id="serviceName" name="ServiceName" />
+    </div>
+    <div>
+        <label for="serviceDetail">Service Details</label>
+        <input id="serviceDetail" name="ServiceDetail" />
+    </div>
+    <div>
+        <label for="departmentId">Department (id / will change to dropdown menu)</label>
+        <input type="number" id="departmentId" name="DepartmentId" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>
+

@@ -1,0 +1,17 @@
+﻿@model T5_Hospital.Models.ServiceDto
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove</h2>
+<p>Are you sure you want to remove the @Model.ServiceName ?</p>
+<form method="post" action="/Service/Delete/@Model.ServiceId">
+    <div>
+        <input class="btn btn-primary" type="submit" formaction="/Service/List" value="Go Back" />
+    </div>
+    <div>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    </div>
+</form>
+
+

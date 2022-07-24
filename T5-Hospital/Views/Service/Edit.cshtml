@@ -1,0 +1,25 @@
+﻿@model T5_Hospital.Models.ServiceDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form method="post" action="/Service/Edit/@Model.ServiceId">
+    <input type="hidden" name="ServiceId" value="@Model.ServiceId" />
+    <div>
+        <label for="serviceName">Service Name</label>
+        <input id="serviceName" name="ServiceName" value="@Model.ServiceName" />
+    </div>
+    <div>
+        <label for="serviceDetail">Service Detail</label>
+        <input id="serviceDetail" name="ServiceDetail" value="@Model.ServiceDetail" />
+    </div>
+    <div>
+        <label for="departmentId">Department</label>
+        <input id="departmentId" name="DepartmentId" value="@Model.DepartmentId" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Update" />
+    </div>
+</form>
+
