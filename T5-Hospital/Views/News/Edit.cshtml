@@ -1,0 +1,24 @@
+﻿@model T5_Hospital.Models.NewsDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form method="post" action="/News/Edit/@Model.NewsId">
+    <input type="hidden" name="NewsId" value="@Model.NewsId" />
+    <div>
+        <label for="newsTitle">News Title</label>
+        <input id="newsTitle" name="NewsTitle" value="@Model.NewsTitle" />
+    </div>
+    <div>
+        <label for="newsContent">Content</label>
+        <input id="newsContent" name="NewsContent" value="@Model.NewsContent" />
+    </div>
+    <div>
+        <label for="newsDate">Date</label>
+        <input id="newsDate" name="NewsDate" value="@Model.NewsDate" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Update" />
+    </div>
+</form>

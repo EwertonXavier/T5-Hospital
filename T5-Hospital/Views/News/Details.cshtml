@@ -1,0 +1,18 @@
+﻿@model T5_Hospital.Models.NewsDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <a class="btn btn-default" href="/News/List">Go back</a>
+</div>
+<div>
+    <a class="btn btn-primary" href="/News/Edit/@Model.NewsId">Edit</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="/News/Remove/@Model.NewsId">Remove</a>
+</div>
+<p>@Model.NewsTitle</p>
+<p>@Model.NewsContent</p>
+<p>@Model.NewsDate</p>

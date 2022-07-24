@@ -190,6 +190,7 @@
     <Compile Include="Controllers\DonorDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsDataController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\ServiceDataController.cs" />
@@ -361,6 +362,12 @@
     <Content Include="Views\Donor\Error.cshtml" />
     <Content Include="Views\Donor\New.cshtml" />
     <Content Include="Views\Donor\Remove.cshtml" />
+    <Content Include="Views\News\List.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Error.cshtml" />
+    <Content Include="Views\News\New.cshtml" />
+    <Content Include="Views\News\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

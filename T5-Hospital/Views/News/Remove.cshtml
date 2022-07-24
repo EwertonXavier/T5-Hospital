@@ -1,0 +1,15 @@
+﻿@model T5_Hospital.Models.NewsDto
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove</h2>
+<p>Are you sure you want to remove the @Model.NewsTitle ?</p>
+<form method="post" action="/News/Delete/@Model.NewsId">
+    <div>
+        <input class="btn btn-primary" type="submit" formaction="/News/List" value="Go Back" />
+    </div>
+    <div>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    </div>
+</form>

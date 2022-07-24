@@ -1,0 +1,36 @@
+﻿@model IEnumerable<T5_Hospital.Models.NewsDto>
+    @{
+        ViewBag.Title = "List";
+    }
+
+    <h2>List</h2>
+    <div>
+        <a class="btn btn-primary" href="/News/New">Add News</a>
+    </div>
+
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">News Title</th>
+                <th class="text-center">Content</th>
+                <th class="text-center">Date</th>
+                <th colspan="2">Controls</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var news in Model)
+            {
+                <tr>
+                    <td>@news.NewsTitle</td>
+                    <td>@news.NewsContent</td>
+                    <td>@news.NewsDate</td>
+                    <td>
+                        <a href="/News/Details/@news.NewsId">Details</a>
+                    </td>
+                    <td>
+                        <a href="/News/Remove/@news.NewsId">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
