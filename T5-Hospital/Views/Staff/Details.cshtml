@@ -1,0 +1,24 @@
+﻿@model T5_Hospital.Models.StaffDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <a class="btn btn-default" href="/Staff/List">Go back</a>
+</div>
+<div>
+    <a class="btn btn-primary" href="/Staff/Edit/@Model.Id">Edit</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="/Staff/Remove/@Model.Id">Remove</a>
+</div>
+
+<p>ID: @Model.Id</p>
+<p>Name: @Model.Name</p>
+<p>Email: @Model.Email</p>
+<p>Department Id:@Model.DepartmentId</p>
+<p>Department Name:@Model.DepartmentName</p>
+<p>Department Description: @Model.DepartmentDescription</p>
+
+

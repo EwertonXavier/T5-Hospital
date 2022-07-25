@@ -195,6 +195,7 @@
     <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\ServiceDataController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
     <Compile Include="Controllers\VisitationDataController.cs" />
     <Compile Include="Controllers\VisitorDataController.cs" />
@@ -375,6 +376,12 @@
     <Content Include="Views\Service\Error.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
     <Content Include="Views\Service\Details.cshtml" />
+    <Content Include="Views\Staff\List.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Staff\Error.cshtml" />
+    <Content Include="Views\Staff\New.cshtml" />
+    <Content Include="Views\Staff\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,15 @@
+﻿@model T5_Hospital.Models.StaffDto
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove</h2>
+<p>Are you sure you want to remove the @Model.Name from the @Model.DepartmentName department?</p>
+<form method="post" action="/Staff/Delete/@Model.Id">
+    <div>
+        <input class="btn btn-primary" type="submit" formaction="/Staff/List" value="Go Back" />
+    </div>
+    <div>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    </div>
+</form>

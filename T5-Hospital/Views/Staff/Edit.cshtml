@@ -1,0 +1,25 @@
+﻿@model T5_Hospital.Models.StaffDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form method="post" action="/Staff/Edit/@Model.Id">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div>
+        <label for="departmentId">Department Id (id / will change to dropdown menu)</label>
+        <input id="departmentId" name="DepartmentId" value=@Model.DepartmentId />
+    </div>
+    <div>
+        <label for="Name">Staff Name</label>
+        <input id="Name" name="Name" value=@Model.Name />
+    </div>
+    <div>
+        <label for="Email">Staff Email</label>
+        <input id="Email" name="Email" value=@Model.Email />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>
+
