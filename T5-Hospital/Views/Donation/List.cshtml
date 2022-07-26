@@ -1,0 +1,41 @@
+﻿@model IEnumerable<T5_Hospital.Models.DonationDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div>
+    <a class="btn btn-primary" href="/Donation/New">Add Donation</a>
+</div>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Donor First Name</th>
+            <th class="text-center">Donor Last Name</th>
+            <th class="text-center">Donation Amount</th>
+            <th class="text-center">Donation Date</th>
+            <th class="text-center">Donation Description</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donation in Model)
+        {
+        <tr>
+            <td>@donation.DonorFirstName</td>
+            <td>@donation.DonorLastName</td>
+            <td>@donation.DonationAmount</td>
+            <td>@donation.DonationDate.ToString("yyyy-MM-dd")</td>
+            <td>@donation.DonationDescription</td>
+            <td>
+                <a href="/Donation/Details/@donation.DonationId">Details</a>
+            </td>
+            <td>
+                <a href="/Donation/Remove/@donation.DonationId">Remove</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
