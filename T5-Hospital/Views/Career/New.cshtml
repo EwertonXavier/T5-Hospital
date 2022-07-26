@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Career</h2>
+<form method="post" action="/Career/Create">
+    <div>
+        <label for="jobTitle">Job Title</label>
+        <input id="jobTitle" name="Title" />
+    </div>
+    <div>
+        <label for="jobDescription">Job Description</label>
+        <input id="jobDescription" name="Description" />
+    </div>
+    <div>
+        <label for="experienceInYears">Experience required (in years)</label>
+        <input id="experienceInYears" name="Experience_In_Years" />
+    </div>
+    <div>
+        <label for="department">Choose Department: (/* This should be a dropdown */)</label>
+        <input id="department" name="DepartmentId" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>

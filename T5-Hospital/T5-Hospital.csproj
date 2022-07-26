@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AppointmentDataController.cs" />
+    <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\CareerDataController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
@@ -396,6 +397,12 @@
     <Content Include="Views\Donation\Error.cshtml" />
     <Content Include="Views\Donation\New.cshtml" />
     <Content Include="Views\Donation\Edit.cshtml" />
+    <Content Include="Views\Career\List.cshtml" />
+    <Content Include="Views\Career\Details.cshtml" />
+    <Content Include="Views\Career\New.cshtml" />
+    <Content Include="Views\Career\Error.cshtml" />
+    <Content Include="Views\Career\Edit.cshtml" />
+    <Content Include="Views\Career\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
