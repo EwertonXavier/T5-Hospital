@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add Appointment</h2>
+<form method="post" action="/Appointment/Create">
+    <div>
+        <label for="PatientId">Patient Id (id / will change to dropdown menu)</label>
+        <input id="PatientId" name="PatientId" />
+    </div>
+    <div>
+        <label for="StaffId">Staff Id (Substitute by Staff Name + Department in the future)</label>
+        <input id="StaffId" name="StaffId" />
+    </div>
+    <div>
+        <label for="AppointmentDate">Appointment Date</label>
+        <input id="AppointmentDate" type="datetime-local" name="AppointmentDate" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>
+

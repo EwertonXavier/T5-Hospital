@@ -1,0 +1,39 @@
+﻿@model IEnumerable<T5_Hospital.Models.AppointmentDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div>
+    <a class="btn btn-primary" href="/Appointment/New">Add Appointment</a>
+</div>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Staff Name</th>
+            <th class="text-center">Department</th>
+            <th class="text-center">Patient First Name</th>
+            <th class="text-center">Patient Last Name</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.StaffName</td>
+                <td>@appointment.StaffDepartmentName</td>
+                <td>@appointment.PatientFirstName</td>
+                <td>@appointment.PatientLastName</td>
+                <td>
+                    <a href="/Appointment/Details/@appointment.Id">Details</a>
+                </td>
+                <td>
+                    <a href="/Appointment/Remove/@appointment.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

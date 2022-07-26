@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AppointmentDataController.cs" />
     <Compile Include="Controllers\CareerDataController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -382,6 +383,12 @@
     <Content Include="Views\Staff\Error.cshtml" />
     <Content Include="Views\Staff\New.cshtml" />
     <Content Include="Views\Staff\Remove.cshtml" />
+    <Content Include="Views\Appointment\List.cshtml" />
+    <Content Include="Views\Appointment\Error.cshtml" />
+    <Content Include="Views\Appointment\Edit.cshtml" />
+    <Content Include="Views\Appointment\Details.cshtml" />
+    <Content Include="Views\Appointment\New.cshtml" />
+    <Content Include="Views\Appointment\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

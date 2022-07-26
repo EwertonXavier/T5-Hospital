@@ -1,0 +1,15 @@
+﻿@model T5_Hospital.Models.AppointmentDto
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove</h2>
+<p>Are you sure you want to remove the appointment of @Model.PatientFirstName with staff named @Model.StaffName taking place @Model.AppointmentDate?</p>
+<form method="post" action="/Appointment/Delete/@Model.Id">
+    <div>
+        <input class="btn btn-primary" type="submit" formaction="/Appointment/List" value="Go Back" />
+    </div>
+    <div>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    </div>
+</form>

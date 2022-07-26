@@ -1,0 +1,25 @@
+﻿@model T5_Hospital.Models.AppointmentDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Appointment</h2>
+<form method="post" action="/Appointment/Edit/@Model.Id">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div>
+        <label for="PatientId">Patient Id (id / will change to dropdown menu)</label>
+        <input id="PatientId" name="PatientId" value=@Model.PatientId />
+    </div>
+    <div>
+        <label for="StaffId">Staff Id (Substitute by Staff Name + Department in the future)</label>
+        <input id="StaffId" name="StaffId" value=@Model.StaffId />
+    </div>
+    <div>
+        <label for="AppointmentDate">Appointment Date</label>
+        <input id="AppointmentDate"  name="AppointmentDate" value="@Model.AppointmentDate" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>
+
