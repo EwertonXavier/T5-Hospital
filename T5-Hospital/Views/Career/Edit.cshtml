@@ -1,0 +1,28 @@
+﻿@model T5_Hospital.Models.CareerDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Career</h2>
+<form method="post" action="/Career/Edit/@Model.JobId">
+    <input type="hidden" name="JobId" value="@Model.JobId" />
+    <div>
+        <label for="jobTitle">Job Title</label>
+        <input id="jobTitle" name="Title" value="@Model.JobTitle" />
+    </div>
+    <div>
+        <label for="jobDescription">Job Description</label>
+        <input id="jobDescription" name="Description" value="@Model.JobDescription" />
+    </div>
+    <div>
+        <label for="experienceInYears">Experience required (in years)</label>
+        <input id="experienceInYears" name="Experience_In_Years" value="@Model.Experience_In_Years" />
+    </div>
+    <div>
+        <label for="department">Choose Department: (/* This should be a dropdown */)</label>
+        <input id="department" name="DepartmentId" value="@Model.DepartmentId" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Update" />
+    </div>
+</form>

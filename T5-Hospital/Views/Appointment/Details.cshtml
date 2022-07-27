@@ -1,0 +1,24 @@
+﻿@model T5_Hospital.Models.AppointmentDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <a class="btn btn-default" href="/Appointment/List">Go back</a>
+</div>
+<div>
+    <a class="btn btn-primary" href="/Appointment/Edit/@Model.Id">Edit</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="/Appointment/Remove/@Model.Id">Remove</a>
+</div>
+
+<p>ID: @Model.Id</p>
+<p>Staff Name: @Model.StaffName </p>
+<p>Department: @Model.StaffDepartmentName</p>
+<p>Patient First Name:@Model.PatientFirstName</p>
+<p>Patient Last Name:@Model.PatientLastName</p>
+<p>Appointment Date:@Model.AppointmentDate</p>
+

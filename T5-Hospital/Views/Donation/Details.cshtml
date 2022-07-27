@@ -1,0 +1,51 @@
+﻿@model T5_Hospital.Models.DonationDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Donation Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">First Name</div>
+                        <div class="col-sm-8">@Model.DonorFirstName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Last Name</div>
+                        <div class="col-sm-8">@Model.DonorLastName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Donation Amount</div>
+                        <div class="col-sm-8">@Model.DonationAmount</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Donation Date</div>
+                        <div class="col-sm-8">@Model.DonationDate.ToString("yyyy-MM-dd")</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Donation Description</div>
+                        <div class="col-sm-8">@Model.DonationDescription</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <a class="btn btn-info" href="/Donation/Edit/@Model.DonationId" role="button">Update</a>
+    <a class="btn btn-danger" href="/Donation/Remove/@Model.DonationId" role="button">Delete</a>
+</div>
+
+<div class="col-md-12 text-center">
+    <a class="primary-light" href="/Donation/List">Back to list</a>
+</div>
+
+

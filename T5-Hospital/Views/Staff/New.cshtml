@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add Staff</h2>
+<form method="post" action="/Staff/Create">
+    <div>
+        <label for="departmentId">Department Id (id / will change to dropdown menu)</label>
+        <input id="departmentId" name="DepartmentId" />
+    </div>
+    <div>
+        <label for="Name">Staff Name</label>
+        <input id="Name" name="Name" />
+    </div>
+    <div>
+        <label for="Email">Staff Email</label>
+        <input id="Email" name="Email" />
+    </div>
+    <div>
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </div>
+</form>
+

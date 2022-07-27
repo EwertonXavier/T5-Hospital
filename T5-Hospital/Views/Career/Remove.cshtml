@@ -1,0 +1,15 @@
+﻿@model T5_Hospital.Models.CareerDto
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove Career</h2>
+<p>Are you sure you want to remove the @Model.JobTitle ?</p>
+<form method="post" action="/Career/Delete/@Model.JobId">
+    <div>
+        <input class="btn btn-primary" type="submit" formaction="/Career/List" value="Go Back" />
+    </div>
+    <div>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+    </div>
+</form>

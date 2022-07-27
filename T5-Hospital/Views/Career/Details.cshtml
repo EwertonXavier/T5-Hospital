@@ -1,0 +1,21 @@
+﻿@model T5_Hospital.Models.CareerDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Career Details</h2>
+<div>
+    <a class="btn btn-default" href="/Career/List">Go back</a>
+</div>
+<div>
+    <a class="btn btn-primary" href="/Career/Edit/@Model.JobId">Edit</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="/Career/Remove/@Model.JobId">Remove</a>
+</div>
+<p>Job Title: @Model.JobTitle</p>
+<p>Job Description: @Model.JobDescription</p>
+<p>Experience Required (In Years): @Model.Experience_In_Years</p>
+<p>Department: @Model.DepartmentName</p>
+
+

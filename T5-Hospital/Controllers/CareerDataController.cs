@@ -51,6 +51,10 @@ namespace T5_Hospital.Controllers
         public IHttpActionResult FindCareer(int id)
         {
             Career career = db.Careers.Find(id);
+            if (career == null)
+            {
+                return NotFound();
+            }
             CareerDto careerDto = new CareerDto()
             {
                 JobId = career.JobId,
@@ -61,10 +65,7 @@ namespace T5_Hospital.Controllers
                 DepartmentName = career.Department.Name,
                 DepartmentDescription = career.Department.Description
             };
-            if (career == null)
-            {
-                return NotFound();
-            }
+            
 
             return Ok(careerDto);
         }

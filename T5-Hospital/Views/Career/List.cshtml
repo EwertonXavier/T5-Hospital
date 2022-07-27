@@ -1,0 +1,41 @@
+﻿@model IEnumerable<T5_Hospital.Models.CareerDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Career List</h2>
+<div>
+    <a class="btn btn-primary" href="/Career/New">Add Career</a>
+</div>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Job Title</th>
+            <th class="text-center">Job Description</th>
+            <th class="text-center">Experience Required (In Years)</th>
+            <th class="text-center">Department</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var career in Model)
+        {
+        <tr>
+            <td>@career.JobTitle</td>
+            <td>@career.JobDescription</td>
+            <td>@career.Experience_In_Years</td>
+            <td>
+                <a href="/Department/Details/@career.DepartmentId">@career.DepartmentName</a>
+            </td>
+            <td>
+                <a href="/Career/Details/@career.JobId">Details</a>
+            </td>
+            <td>
+                <a href="/Career/Remove/@career.JobId">Remove</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
