@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "New Visitor";
+}
+
+<h2>Add Visitor</h2>
+<form method="post" action="/Visitor/Create">
+    <div>
+        <label for="patientFName">First Name</label>
+        <input id="patientFName" type="text" name="FirstName" />
+    </div>
+    <div>
+        <label for="patientLName">Last Name</label>
+        <input id="patientLName" type="text" name="LastName" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
+</form>

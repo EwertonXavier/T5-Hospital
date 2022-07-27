@@ -202,6 +202,7 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
     <Compile Include="Controllers\VisitationDataController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\VisitorDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -410,6 +411,12 @@
     <Content Include="Views\Patient\Details.cshtml" />
     <Content Include="Views\Patient\Error.cshtml" />
     <Content Include="Views\Patient\Edit.cshtml" />
+    <Content Include="Views\Visitor\List.cshtml" />
+    <Content Include="Views\Visitor\Details.cshtml" />
+    <Content Include="Views\Visitor\Edit.cshtml" />
+    <Content Include="Views\Visitor\Error.cshtml" />
+    <Content Include="Views\Visitor\New.cshtml" />
+    <Content Include="Views\Visitor\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

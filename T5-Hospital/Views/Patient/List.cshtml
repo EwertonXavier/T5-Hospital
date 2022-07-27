@@ -17,16 +17,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var service in Model)
+        @foreach (var patient in Model)
         {
             <tr>
-                <td>@service.FirstName</td>
-                <td>@service.LastName</td>
+                <td>@patient.FirstName</td>
+                <td>@patient.LastName</td>
                 <td>
-                    <a href="/Patient/Details/@service.PatientId">Details</a>
+                    <a href="/Patient/Details/@patient.PatientId">Details</a>
                 </td>
                 <td>
-                    <a href="/Patient/Remove/@service.PatientId">Remove</a>
+                    <a href="/Patient/Remove/@patient.PatientId">Remove</a>
                 </td>
             </tr>
         }

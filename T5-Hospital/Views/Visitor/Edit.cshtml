@@ -1,0 +1,20 @@
+﻿@model T5_Hospital.Models.VisitorDto
+@{
+    ViewBag.Title = "Edit Visitor";
+}
+
+<h2>Edit Visitor</h2>
+<form method="post" action="/Visitor/Edit/@Model.VisitorId">
+    <input type="hidden" name="VisitorId" value="@Model.VisitorId" />
+    <div>
+        <label for="visitorFName">First Name</label>
+        <input id="visitorFName" type="text" name="FirstName" value="@Model.FirstName" />
+    </div>
+    <div>
+        <label for="visitorLName">Last Name</label>
+        <input id="visitorLName" type="text" name="LastName" value="@Model.LastName" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+</form>

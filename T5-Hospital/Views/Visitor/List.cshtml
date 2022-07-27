@@ -1,0 +1,34 @@
+﻿@model IEnumerable<T5_Hospital.Models.VisitorDto>
+@{
+    ViewBag.Title = "List Visitors";
+}
+
+<h2>List Visitors</h2>
+<div>
+    <a class="btn btn-primary" href="/Visitor/New">Add Visitor</a>
+</div>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Visitor First Name</th>
+            <th class="text-center">Visitor Last Name</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var visitor in Model)
+        {
+            <tr>
+                <td>@visitor.FirstName</td>
+                <td>@visitor.LastName</td>
+                <td>
+                    <a href="/Visitor/Details/@visitor.VisitorId">Details</a>
+                </td>
+                <td>
+                    <a href="/Visitor/Remove/@visitor.VisitorId">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

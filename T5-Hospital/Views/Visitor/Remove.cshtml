@@ -1,0 +1,14 @@
+﻿@model T5_Hospital.Models.VisitorDto
+@{
+    ViewBag.Title = "Remove Visitor";
+}
+
+<h2>Remove Visitor</h2>
+<p>Are you sure you want to remove @Model.FirstName @Model.LastName?</p>
+
+<form method="post" action="/Visitor/Delete/@Model.VisitorId">
+    <input class="btn btn-primary" type="submit" formaction="/Visitor/List" value="Go Back" />
+    <input class="btn btn-danger" type="submit" value="Delete" />
+</form>
+
+
