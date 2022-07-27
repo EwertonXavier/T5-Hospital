@@ -1,0 +1,138 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using T5_Hospital.Models;
+
+namespace T5_Hospital.Controllers
+{
+    public class PatientController : Controller
+    {
+        private static readonly HttpClient client;
+        private JavaScriptSerializer jss = new JavaScriptSerializer();
+
+        static PatientController()
+        {
+            client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44316/api/");
+        }
+        // GET: Patient
+        public ActionResult List()
+        {
+            string url = "PatientData/ListPatients";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<PatientDto> patients = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            return View(patients);
+        }
+
+        // GET: Patient/Details/5
+        public ActionResult Details(int id)
+        {
+            string url = "PatientData/FindPatient/" + id;
+
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PatientDto patient = response.Content.ReadAsAsync<PatientDto>().Result;
+
+            return View(patient);
+        }
+
+        // GET: Patient/New
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        // POST: Patient/Create
+        [HttpPost]
+        public ActionResult Create(Patient patient)
+        {
+            string url = "PatientData/AddPatient";
+
+            string jsonpayload = jss.Serialize(patient);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        // GET: Patient/Edit/5
+        public ActionResult Edit(int id)
+        {
+            string url = "PatientData/FindPatient/" + id;
+
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PatientDto patientDto = response.Content.ReadAsAsync<PatientDto>().Result;
+
+            return View(patientDto);
+        }
+
+        // POST: Patient/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, Patient patient)
+        {
+            string url = "PatientData/UpdatePatient/" + id;
+
+            string jsonpayload = jss.Serialize(patient);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Details/" + id);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        // GET: Patient/Remove/5
+        public ActionResult Remove(int id)
+        {
+            string url = "PatientData/FindPatient/" + id;
+
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PatientDto patientDto = response.Content.ReadAsAsync<PatientDto>().Result;
+
+            return View(patientDto);
+        }
+
+        // POST: Patient/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            string url = "PatientData/DeletePatient/" + id;
+
+            HttpContent content = new StringContent("");
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+        public ActionResult Error()
+        {
+            return View();
+        }
+    }
+}

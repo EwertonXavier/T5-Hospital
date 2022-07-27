@@ -1,0 +1,13 @@
+﻿@model T5_Hospital.Models.PatientDto
+@{
+    ViewBag.Title = "Remove Patient";
+}
+
+<h2>Remove Patient</h2>
+<p>Are you sure you want to remove @Model.FirstName @Model.LastName?</p>
+<form method="post" action="/Patient/Delete/@Model.PatientId">
+    <input class="btn btn-primary" type="submit" formaction="/Patient/List" value="Go Back" />
+    <input class="btn btn-danger" type="submit" value="Delete" />
+</form>
+
+

@@ -1,0 +1,24 @@
+﻿@model T5_Hospital.Models.PatientDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Patient</h2>
+<form method="post" action="/Patient/Edit/@Model.PatientId">
+    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+    <div>
+        <label for="patientFName">First Name</label>
+        <input id="patientFName" type="text" name="FirstName" value="@Model.FirstName" />
+    </div>
+    <div>
+        <label for="patientLName">Last Name</label>
+        <input id="patientLName" type="text" name="LastName" value="@Model.LastName" />
+    </div>
+    <div>
+        <label for="patientDOB">Date of Birth</label>
+        <input id="patientDOB" type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToUniversalTime().ToString("u").Split(' ')[0]" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+</form>

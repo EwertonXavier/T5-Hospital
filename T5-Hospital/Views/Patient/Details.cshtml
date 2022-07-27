@@ -1,0 +1,14 @@
+﻿@model T5_Hospital.Models.PatientDto
+@{
+    ViewBag.Title = "Patient Details";
+}
+
+<h2>Patient Details</h2>
+
+<a class="btn btn-default" href="/Patient/List">Go back</a>
+<a class="btn btn-primary" href="/Patient/Edit/@Model.PatientId">Edit</a>
+<a class="btn btn-danger" href="/Patient/Remove/@Model.PatientId">Remove</a><br /><br />
+
+<b>Patient Name: </b><p>@Model.FirstName @Model.LastName</p>
+<b>Patient DoB: </b><time datetime="@Model.DateOfBirth">@Model.DateOfBirth</time>
+

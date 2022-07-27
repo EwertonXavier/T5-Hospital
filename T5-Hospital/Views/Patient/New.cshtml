@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add Patient</h2>
+<form method="post" action="/Patient/Create">
+    <div>
+        <label for="patientFName">First Name</label>
+        <input id="patientFName" type="text" name="FirstName" />
+    </div>
+    <div>
+        <label for="patientLName">Last Name</label>
+        <input id="patientLName" type="text" name="LastName" />
+    </div>
+    <div>
+        <label for="patientDOB">Date of Birth</label>
+        <input id="patientDOB" type="date" name="DateOfBirth" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
+</form>
