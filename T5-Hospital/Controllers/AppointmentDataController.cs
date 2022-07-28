@@ -45,6 +45,44 @@ namespace T5_Hospital.Controllers
             return AppointmentsDto;
         }
         /// <summary>
+        /// This endpoint returns a list of all appointments for a patient of the id received as parameter
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IEnumerable AppointmentsForPatientDto with all appointments of a id Type</returns>
+        [HttpGet]
+        public IEnumerable<AppointmentDto> ListAppointmentForPatient(int id)
+        {
+            List<Appointment> Appointments = db.Appointments.ToList();
+            List<AppointmentDto> AppointmentsForPatientDto = new List<AppointmentDto>();
+
+            Appointments.ForEach(SearchPatient);
+
+            
+
+            void SearchPatient(Appointment appointment)
+            {
+                if (id == appointment.PatientId)
+                {
+                    AppointmentsForPatientDto.Add(new AppointmentDto()
+                    {
+                        Id = appointment.Id,
+                        AppointmentDate = appointment.AppointmentDate,
+                        PatientId = appointment.Patient.PatientId,
+                        PatientFirstName = appointment.Patient.FirstName,
+                        PatientLastName = appointment.Patient.LastName,
+                        PatientDateOfBirth = appointment.Patient.DateOfBirth,
+                        StaffId = appointment.Staff.Id,
+                        StaffName = appointment.Staff.Name,
+                        StaffDepartmentId = appointment.Staff.DepartmentId,
+                        StaffDepartmentName = appointment.Staff.Department.Name
+                    });
+                }
+            }
+            return AppointmentsForPatientDto;
+
+        }
+
+        /// <summary>
         /// GET: api/AppointmentData/FindAppointment/5
         /// Access the appointment table on the database to retrieve a specific appointments
         /// </summary>
@@ -76,6 +114,8 @@ namespace T5_Hospital.Controllers
 
             return Ok(appointmentDto);
         }
+
+
         /// <summary>
         /// POST: api/AppointmentData/UpdateAppointment/5
         /// Update information from an appointment on the database
