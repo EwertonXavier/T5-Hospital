@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "New Visitation Record";
+}
+
+<h2>New Visitation Record</h2>
+
+<form method="post" action="/Visitation/Create">
+    <div>
+        <label for="arrivateDate">Arrival Date</label>
+        <input id="arrivateDate" type="date" min="@DateTime.Now" name="ArrivalDate" />
+    </div>
+    <div>
+        <label for="departureDate">Departure Date</label>
+        <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" />
+    </div>
+    <div>
+        <label for="visitorId">VisitorID</label>
+        <input id="visitorId" type="number" min="0" step="1" name="VisitorId" />
+    </div>
+    <div>
+        <label for="patientId">PatientID</label>
+        <input id="patientId" type="number" min="0" step="1" name="PatientId" />
+    </div>
+    <div>
+        <label for="relationToVisitor">Relation To Visitor</label>
+        <input id="relationToVisitor" type="text" name="RelationToVisitor" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
+</form>

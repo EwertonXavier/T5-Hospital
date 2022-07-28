@@ -1,0 +1,28 @@
+﻿@model T5_Hospital.Models.VisitationDto
+@{
+    ViewBag.Title = "Visitation Record Details";
+}
+
+<h2>Visitation Record Details</h2>
+
+<a class="btn btn-default" href="/Visitation/List">Go back</a>
+<a class="btn btn-primary" href="/Visitation/Edit/@Model.VisitationId">Edit</a>
+<a class="btn btn-danger" href="/Visitation/Remove/@Model.VisitationId">Remove</a>
+<br />
+<br />
+
+<div>
+    <b>Visitor:</b> <p>@Model.VisitorFirstName</p>
+</div>
+<div>
+    <b>Patient:</b><p>@Model.PatientFirstName</p>
+</div>
+<div>
+    <b>Relation to Patient: </b><p>@Model.RelationToVisitor</p>
+</div>
+<div>
+    <b>Date of Arrival: </b><p>@Model.ArrivalDate</p>
+</div>
+<div>
+    <b>Date of Departure: </b><p>@Model.DepartureDate</p>
+</div>

@@ -1,0 +1,33 @@
+﻿@model T5_Hospital.Models.VisitationDto
+@{
+    ViewBag.Title = "Edit Visitation Record";
+}
+
+<h2>Edit Visitation Record</h2>
+
+<form method="post" action="/Visitation/Edit/@Model.VisitationId">
+    <input type="hidden" name="VisitationId" value="@Model.VisitationId" />
+    <div>
+        <label for="arrivateDate">Arrival Date</label>
+        <input id="arrivateDate" type="date" min="@DateTime.Now" name="ArrivalDate" value="@Model.ArrivalDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+    </div>
+    <div>
+        <label for="departureDate">Departure Date</label>
+        <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" value="@Model.DepartureDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+    </div>
+    <div>
+        <label for="visitorId">VisitorID</label>
+        <input id="visitorId" type="number" min="0" step="1" name="VisitorId" value="@Model.VisitorId" />
+    </div>
+    <div>
+        <label for="patientId">PatientID</label>
+        <input id="patientId" type="number" min="0" step="1" name="PatientId" value="@Model.PatientId" />
+    </div>
+    <div>
+        <label for="relationToPatient">Relation To Visitor</label>
+        <input id="relationToPatient" type="text" name="RelationToVisitor" value="@Model.RelationToVisitor" />
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+</form>
