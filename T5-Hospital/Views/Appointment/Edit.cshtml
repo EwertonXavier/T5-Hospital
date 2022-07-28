@@ -1,22 +1,44 @@
-﻿@model T5_Hospital.Models.AppointmentDto
+﻿@model T5_Hospital.Models.ViewModels.UpdateAppointment
+
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit Appointment</h2>
-<form method="post" action="/Appointment/Edit/@Model.Id">
-    <input type="hidden" name="Id" value="@Model.Id" />
+<form method="post" action="/Appointment/Edit/@Model.Appointment.Id">
+    <input type="hidden" name="Id" value="@Model.Appointment.Id" />
     <div>
-        <label for="PatientId">Patient Id (id / will change to dropdown menu)</label>
-        <input id="PatientId" name="PatientId" value=@Model.PatientId />
+        <label for="PatientId">Patient</label>
+        <select name="PatientId" id="PatientId">
+            @foreach (var patient in Model.AvailablePatient)
+            {
+                if (Model.Appointment.PatientId == patient.PatientId)
+                {
+                    <option selected value=@patient.PatientId> @patient.FirstName @patient.LastName (id:@patient.PatientId)</option>
+
+                }
+                <option value=@patient.PatientId> @patient.FirstName @patient.LastName (id:@patient.PatientId)</option>
+
+            }
+        </select>
     </div>
     <div>
-        <label for="StaffId">Staff Id (Substitute by Staff Name + Department in the future)</label>
-        <input id="StaffId" name="StaffId" value=@Model.StaffId />
+        <label for="StaffId">Staff</label>
+        <select name="StaffId" id="StaffId">
+            @foreach (var staff in Model.AvailableStaff)
+            {
+                if (Model.Appointment.StaffId == staff.Id)
+                {
+                    <option selected value=@staff.Id> @staff.Name (Department:@staff.DepartmentName)</option>
+                }
+                <option value=@staff.Id> @staff.Name (Department:@staff.DepartmentName)</option>
+
+            }
+        </select>
     </div>
     <div>
         <label for="AppointmentDate">Appointment Date</label>
-        <input id="AppointmentDate"  name="AppointmentDate" value="@Model.AppointmentDate" />
+        <input id="AppointmentDate" name="AppointmentDate" value="@Model.Appointment.AppointmentDate" />
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Submit" />

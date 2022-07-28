@@ -78,10 +78,18 @@ namespace T5_Hospital.Controllers
         // GET: Appointment/Edit/5
         public ActionResult Edit(int id)
         {
+            UpdateAppointment updateAppointment = new UpdateAppointment();
             string url = "AppointmentData/FindAppointment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            AppointmentDto appointments = response.Content.ReadAsAsync<AppointmentDto>().Result;
-            return View(appointments);
+            updateAppointment.Appointment = response.Content.ReadAsAsync<AppointmentDto>().Result;
+            url = "StaffData/ListStaff";
+           response = client.GetAsync(url).Result;
+            updateAppointment.AvailableStaff = response.Content.ReadAsAsync<IEnumerable<StaffDto>>().Result;
+            url = "PatientData/ListPatients";
+            response = client.GetAsync(url).Result;
+            updateAppointment.AvailablePatient = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            return View(updateAppointment);
         }
 
         // POST: Appointment/Edit/5
