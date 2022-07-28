@@ -41,6 +41,36 @@ namespace T5_Hospital.Controllers
             return DonationDtoList;
         }
 
+
+        /// <summary>
+        /// Gather information about all donations related to a donor
+        /// </summary>
+        /// <returns>
+        /// All Donations in the databas, including thier associated Donor
+        /// </returns>
+        /// <param name="id">Donor ID.</param>
+
+        /// GET: api/DonationData/ListDonationsForDonor/3
+        [HttpGet]
+        [ResponseType(typeof(DonationDto))]
+        public IHttpActionResult ListDonationsForDonor(int id)
+        {
+            List<Donation> Donations = db.Donations.Where(d => d.DonorId == id).ToList();
+            List<DonationDto> DonationDtos = new List<DonationDto>();
+
+            Donations.ForEach(d => DonationDtos.Add(new DonationDto()
+            {
+                DonationId = d.DonationId,
+                DonationDescription = d.DonationDescription,
+                DonationDate = d.DonationDate,
+                DonationAmount = d.DonationAmount,
+                DonorId = d.Donor.DonorId,
+                DonorFirstName = d.Donor.DonorFirstName,
+                DonorLastName = d.Donor.DonorLastName
+            }));
+            return Ok(DonationDtos);
+        }
+
         /// <summary>
         /// Gets a specific donation by its id and display it
         /// </summary>

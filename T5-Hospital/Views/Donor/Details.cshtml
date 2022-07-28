@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.DonorDto
+﻿@model T5_Hospital.Models.ViewModels.DetailsDonor
 @{
     ViewBag.Title = "Details";
 }
@@ -13,20 +13,40 @@
                 <div class="list-group-item-text">
                     <div class="row">
                         <div class="col-sm-4">First Name</div>
-                        <div class="col-sm-8">@Model.DonorFirstName</div>
+                        <div class="col-sm-8">@Model.SelectedDonor.DonorFirstName</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Last Name</div>
-                        <div class="col-sm-8">@Model.DonorLastName</div>
+                        <div class="col-sm-8">@Model.SelectedDonor.DonorLastName</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Email address</div>
-                        <div class="col-sm-8">@Model.DonorEmail</div>
+                        <div class="col-sm-8">@Model.SelectedDonor.DonorEmail</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Phone number</div>
-                        <div class="col-sm-8">@Model.DonorPhone</div>
+                        <div class="col-sm-8">@Model.SelectedDonor.DonorPhone</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Donations Related to this Donor</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var donation in Model.RelatedDonations)
+                            {
+                                <a href="/Donation/Details/@donation.DonationId">$@donation.DonationAmount --- @donation.DonationDate.ToString("yyyy-MM-dd")</a><br/>
+                            }
+                        </div>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -35,8 +55,8 @@
 
 
 <div class="text-center">
-    <a class="btn btn-info" href="/Donor/Edit/@Model.DonorId" role="button">Update</a>
-    <a class="btn btn-danger" href="/Donor/Remove/@Model.DonorId" role="button">Delete</a>
+    <a class="btn btn-info" href="/Donor/Edit/@Model.SelectedDonor.DonorId" role="button">Update</a>
+    <a class="btn btn-danger" href="/Donor/Remove/@Model.SelectedDonor.DonorId" role="button">Delete</a>
 </div>
 
 <div class="col-md-12 text-center">

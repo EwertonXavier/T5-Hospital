@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -32,16 +33,33 @@ namespace T5_Hospital.Controllers
         // GET: Donation/Details/5
         public ActionResult Details(int id)
         {
+            DetailsDonation ViewModel = new DetailsDonation();
+
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonationDto donation = response.Content.ReadAsAsync<DonationDto>().Result;
-            return View(donation);
+            DonationDto SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
+            ViewModel.SelectedDonation = SelectedDonation;
+
+            return View(ViewModel);
+
         }
 
         // GET: Donation/New
         public ActionResult New()
         {
-            return View();
+            NewDonation ViewModel = new NewDonation();
+
+            //information about all the donors in the system
+            //GET api/DonorData/ListDonors
+            string url = "";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+
+            url = "DonorData/ListDonors/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
+            ViewModel.DonorOptions = DonorOptions;
+
+            return View(ViewModel);
         }
 
         // POST: Donation/Create
@@ -69,10 +87,20 @@ namespace T5_Hospital.Controllers
         // GET: Donation/Edit/5
         public ActionResult Edit(int id)
         {
+            UpdateDonation ViewModel = new UpdateDonation();
+
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonationDto donationDto = response.Content.ReadAsAsync<DonationDto>().Result;
-            return View(donationDto);
+            DonationDto SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
+            ViewModel.SelectedDonation = SelectedDonation;
+
+            //all donors to choose from when updating this Donation
+            url = "DonorData/ListDonors/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
+            ViewModel.DonorOptions = DonorOptions;
+
+            return View(ViewModel);
         }
 
         // POST: Donation/Edit/5
@@ -120,8 +148,8 @@ namespace T5_Hospital.Controllers
         {
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonationDto donationDto = response.Content.ReadAsAsync<DonationDto>().Result;
-            return View(donationDto);
+            DonationDto SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
+            return View(SelectedDonation);
         }
 
         public ActionResult Error()

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -32,10 +33,21 @@ namespace T5_Hospital.Controllers
         // GET: Donor/Details/5
         public ActionResult Details(int id)
         {
+            DetailsDonor ViewModel = new DetailsDonor();
             string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonorDto donor = response.Content.ReadAsAsync<DonorDto>().Result;
-            return View(donor);
+            DonorDto SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
+            ViewModel.SelectedDonor = SelectedDonor;
+
+            //Showcase information about the donation related to this Donor
+
+            url = "DonationData/ListDonationsforDonor/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<DonationDto> RelatedDonations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
+            ViewModel.RelatedDonations = RelatedDonations;
+
+            return View(ViewModel);
+
         }
 
         // GET: Donor/New
@@ -69,10 +81,14 @@ namespace T5_Hospital.Controllers
         // GET: Donor/Edit/5
         public ActionResult Edit(int id)
         {
+            UpdateDonor ViewModel = new UpdateDonor();
+
             string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonorDto donorDto = response.Content.ReadAsAsync<DonorDto>().Result;
-            return View(donorDto);
+            DonorDto SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
+            ViewModel.SelectedDonor = SelectedDonor;
+
+            return View(ViewModel);
         }
 
         // POST: Donor/Edit/5
@@ -120,8 +136,8 @@ namespace T5_Hospital.Controllers
         {
             string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonorDto donorDto = response.Content.ReadAsAsync<DonorDto>().Result;
-            return View(donorDto);
+            DonorDto SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
+            return View(SelectedDonor);
         }
 
         public ActionResult Error()
