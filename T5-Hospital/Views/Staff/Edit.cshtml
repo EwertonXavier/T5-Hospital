@@ -7,7 +7,7 @@
 <form method="post" action="/Staff/Edit/@Model.SelectedStaff.Id">
     <input type="hidden" name="Id" value="@Model.SelectedStaff.Id" />
     <div>
-        <label for="departmentId">Department Id (id / will change to dropdown menu)</label>
+        <label for="departmentId">Department:</label>
         <select name="DepartmentId" id="departmentId">
             @foreach (var department in Model.AvailableDepartments)
             {
