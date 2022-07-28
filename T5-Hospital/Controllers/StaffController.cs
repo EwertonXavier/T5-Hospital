@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using T5_Hospital.Models;
 using System.Web.Script.Serialization;
 using System.Net.Http;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -43,7 +44,11 @@ namespace T5_Hospital.Controllers
         // GET: Staff/New
         public ActionResult New()
         {
-            return View();
+
+            string url = "DepartmentData/ListDepartments";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            return View(departments);
         }
 
         // POST: Staff/Create
@@ -71,10 +76,16 @@ namespace T5_Hospital.Controllers
         // GET: Staff/Edit/5
         public ActionResult Edit(int id)
         {
-            string url = "StaffData/FindStaff/" + id;
+            UpdateStaff updateStaff = new UpdateStaff();
+            string url = "DepartmentData/ListDepartments";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            StaffDto staffdto = response.Content.ReadAsAsync<StaffDto>().Result;
-            return View(staffdto);
+            updateStaff.AvailableDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+           
+            url = "StaffData/FindStaff/" + id;
+            response = client.GetAsync(url).Result;
+            updateStaff.SelectedStaff = response.Content.ReadAsAsync<StaffDto>().Result;
+
+            return View(updateStaff);
         }
 
         // POST: Staff/Edit/5
