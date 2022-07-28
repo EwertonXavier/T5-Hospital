@@ -16,7 +16,7 @@
     </div>
     <div>
         <label for="newsDate">Date</label>
-        <input id="newsDate" name="NewsDate" value="@Model.NewsDate" />
+        <input id="newsDate" name="NewsDate" type="date" value="@Model.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Update" />

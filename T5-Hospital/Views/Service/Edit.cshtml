@@ -19,7 +19,14 @@
         <select name="DepartmentId" id="departmentId" value="@Model.SelectedService.DepartmentName">
             @foreach (var department in Model.AvailableDepartments)
             {
-                <option value="@department.DepartmentId">@department.DepartmentName</option>
+                if (Model.SelectedService.DepartmentId == department.DepartmentId)
+                {
+                    <option selected value=@department.DepartmentId> @department.DepartmentName</option>
+                }
+                else
+                {
+                    <option value=@department.DepartmentId> @department.DepartmentName</option>
+                }
 
             }
         </select>
