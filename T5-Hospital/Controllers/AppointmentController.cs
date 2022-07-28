@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Net.Http;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -42,7 +43,15 @@ namespace T5_Hospital.Controllers
         // GET: Appointment/New
         public ActionResult New()
         {
-            return View();
+            NewAppointment newAppointment = new NewAppointment();
+            string url = "StaffData/ListStaff";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            newAppointment.AvailableStaff = response.Content.ReadAsAsync<IEnumerable<StaffDto>>().Result;
+            url = "PatientData/ListPatients";
+            response = client.GetAsync(url).Result;
+            newAppointment.AvailablePatient = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            return View(newAppointment);
         }
 
         // POST: Appointment/Create

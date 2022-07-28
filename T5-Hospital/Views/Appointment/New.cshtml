@@ -1,4 +1,5 @@
-﻿
+﻿@model T5_Hospital.Models.ViewModels.NewAppointment
+
 @{
     ViewBag.Title = "New";
 }
@@ -6,12 +7,22 @@
 <h2>Add Appointment</h2>
 <form method="post" action="/Appointment/Create">
     <div>
-        <label for="PatientId">Patient Id (id / will change to dropdown menu)</label>
-        <input id="PatientId" name="PatientId" />
+        <label for="PatientId">Patient</label>
+        <select name="PatientId" id="PatientId">
+            @foreach (var patient in Model.AvailablePatient)
+            {
+                <option value=@patient.PatientId> @patient.FirstName @patient.LastName (id:@patient.PatientId)</option>
+            }
+        </select>
     </div>
     <div>
-        <label for="StaffId">Staff Id (Substitute by Staff Name + Department in the future)</label>
-        <input id="StaffId" name="StaffId" />
+        <label for="StaffId">Staff</label>
+        <select name="StaffId" id="StaffId">
+            @foreach (var staff in Model.AvailableStaff)
+            {
+                <option value=@staff.Id> @staff.Name (Department:@staff.DepartmentName)</option>
+            }
+        </select>
     </div>
     <div>
         <label for="AppointmentDate">Appointment Date</label>
