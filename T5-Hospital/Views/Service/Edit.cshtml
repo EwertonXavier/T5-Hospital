@@ -1,22 +1,28 @@
-﻿@model T5_Hospital.Models.ServiceDto
+﻿@model T5_Hospital.Models.ViewModels.UpdateService
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
-<form method="post" action="/Service/Edit/@Model.ServiceId">
-    <input type="hidden" name="ServiceId" value="@Model.ServiceId" />
+<form method="post" action="/Service/Edit/@Model.SelectedService.ServiceId">
+    <input type="hidden" name="ServiceId" value="@Model.SelectedService.ServiceId" />
     <div>
         <label for="serviceName">Service Name</label>
-        <input id="serviceName" name="ServiceName" value="@Model.ServiceName" />
+        <input id="serviceName" name="ServiceName" value="@Model.SelectedService.ServiceName" />
     </div>
     <div>
         <label for="serviceDetail">Service Detail</label>
-        <input id="serviceDetail" name="ServiceDetail" value="@Model.ServiceDetail" />
+        <input id="serviceDetail" name="ServiceDetail" value="@Model.SelectedService.ServiceDetail" />
     </div>
     <div>
-        <label for="departmentId">Department</label>
-        <input id="departmentId" name="DepartmentId" value="@Model.DepartmentId" />
+        <label for="departmentId">Department:</label>
+        <select name="DepartmentId" id="departmentId" value="@Model.SelectedService.DepartmentName">
+            @foreach (var department in Model.AvailableDepartments)
+            {
+                <option value="@department.DepartmentId">@department.DepartmentName</option>
+
+            }
+        </select>
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Update" />

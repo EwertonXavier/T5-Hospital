@@ -36,6 +36,7 @@ namespace T5_Hospital.Controllers
             return DepartmentDtoList;
         }
 
+
         /// <summary>
         /// Gets a specific department by its id and display it
         /// </summary>
