@@ -281,11 +281,8 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Staff.cs" />
-    <Compile Include="Models\ViewModels\DetailsDonation.cs" />
     <Compile Include="Models\ViewModels\DetailsDonor.cs" />
-    <Compile Include="Models\ViewModels\NewDonation.cs" />
     <Compile Include="Models\ViewModels\UpdateDonation.cs" />
-    <Compile Include="Models\ViewModels\UpdateDonor.cs" />
     <Compile Include="Models\Visitation.cs" />
     <Compile Include="Models\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

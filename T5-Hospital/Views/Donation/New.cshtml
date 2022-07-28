@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.ViewModels.NewDonation
+﻿@model IEnumerable<T5_Hospital.Models.DonorDto>
 @{
     ViewBag.Title = "New";
 }
@@ -12,7 +12,7 @@
                 <label class="col-sm-4 control-label" for="DonationDescription">Donor</label>
                 <div class="col-sm-8">
                     <select class="form-control" name="DonorID">
-                        @foreach (var donor in Model.DonorOptions)
+                        @foreach (var donor in Model)
                         {
                             <option class="form-control" value="@donor.DonorId">@donor.DonorFirstName @donor.DonorLastName</option>
                         }

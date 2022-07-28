@@ -33,33 +33,30 @@ namespace T5_Hospital.Controllers
         // GET: Donation/Details/5
         public ActionResult Details(int id)
         {
-            DetailsDonation ViewModel = new DetailsDonation();
 
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             DonationDto SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
-            ViewModel.SelectedDonation = SelectedDonation;
 
-            return View(ViewModel);
+            return View(SelectedDonation);
 
         }
 
         // GET: Donation/New
         public ActionResult New()
         {
-            NewDonation ViewModel = new NewDonation();
+            //NewDonation ViewModel = new NewDonation();
 
             //information about all the donors in the system
             //GET api/DonorData/ListDonors
-            string url = "";
+            //string url = "";
+
+            string url = "DonorData/ListDonors/";
             HttpResponseMessage response = client.GetAsync(url).Result;
-
-            url = "DonorData/ListDonors/";
-            response = client.GetAsync(url).Result;
             IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
-            ViewModel.DonorOptions = DonorOptions;
+            //ViewModel.DonorOptions = DonorOptions;
 
-            return View(ViewModel);
+            return View(DonorOptions);
         }
 
         // POST: Donation/Create

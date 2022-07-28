@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.ViewModels.DetailsDonation
+﻿@model T5_Hospital.Models.DonationDto
 
 @{
     ViewBag.Title = "Details";
@@ -14,19 +14,19 @@
                 <div class="list-group-item-text">
                     <div class="row">
                         <div class="col-sm-4">Donor Name</div>
-                        <div class="col-sm-8"><a href="/Donor/Details/@Model.SelectedDonation.DonorId">@Model.SelectedDonation.DonorFirstName @Model.SelectedDonation.DonorLastName</a></div>
+                        <div class="col-sm-8"><a href="/Donor/Details/@Model.DonorId">@Model.DonorFirstName @Model.DonorLastName</a></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Donation Amount</div>
-                        <div class="col-sm-8">@Model.SelectedDonation.DonationAmount</div>
+                        <div class="col-sm-8">@Model.DonationAmount</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Donation Date</div>
-                        <div class="col-sm-8">@Model.SelectedDonation.DonationDate.ToString("yyyy-MM-dd")</div>
+                        <div class="col-sm-8">@Model.DonationDate.ToString("yyyy-MM-dd")</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">Donation Description</div>
-                        <div class="col-sm-8">@Model.SelectedDonation.DonationDescription</div>
+                        <div class="col-sm-8">@Model.DonationDescription</div>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
 
 
 <div class="text-center">
-    <a class="btn btn-info" href="/Donation/Edit/@Model.SelectedDonation.DonationId" role="button">Update</a>
-    <a class="btn btn-danger" href="/Donation/Remove/@Model.SelectedDonation.DonationId" role="button">Delete</a>
+    <a class="btn btn-info" href="/Donation/Edit/@Model.DonationId" role="button">Update</a>
+    <a class="btn btn-danger" href="/Donation/Remove/@Model.DonationId" role="button">Delete</a>
 </div>
 
 <div class="col-md-12 text-center">

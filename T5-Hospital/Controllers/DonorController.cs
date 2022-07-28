@@ -81,14 +81,12 @@ namespace T5_Hospital.Controllers
         // GET: Donor/Edit/5
         public ActionResult Edit(int id)
         {
-            UpdateDonor ViewModel = new UpdateDonor();
 
             string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             DonorDto SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
-            ViewModel.SelectedDonor = SelectedDonor;
 
-            return View(ViewModel);
+            return View(SelectedDonor);
         }
 
         // POST: Donor/Edit/5
