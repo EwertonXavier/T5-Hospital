@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.DepartmentDto
+﻿@model T5_Hospital.Models.ViewModels.DetailsDepartment
 @{
     ViewBag.Title = "Details";
 }
@@ -8,12 +8,20 @@
     <a class="btn btn-default" href="/Department/List">Go back</a>
 </div>
 <div>
-    <a class="btn btn-primary" href="/Department/Edit/@Model.DepartmentId">Edit</a>
+    <a class="btn btn-primary" href="/Department/Edit/@Model.Department.DepartmentId">Edit</a>
 </div>
 <div>
-    <a class="btn btn-danger" href="/Department/Remove/@Model.DepartmentId">Remove</a>
+    <a class="btn btn-danger" href="/Department/Remove/@Model.Department.DepartmentId">Remove</a>
 </div>
-<p>Department name: @Model.DepartmentName</p>
-<p>Description : @Model.DepartmentDescription</p>
+<p>Department name: @Model.Department.DepartmentName</p>
+<p>Description : @Model.Department.DepartmentDescription</p>
+<h3>List of services</h3>
+@foreach (var service in Model.Services)
+{
+<div>
+    <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a>
+</div>
+
+}
 
 

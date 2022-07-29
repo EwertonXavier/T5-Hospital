@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -32,10 +33,14 @@ namespace T5_Hospital.Controllers
         // GET: Department/Details/5
         public ActionResult Details(int id)
         {
-            string url = "DepartmentData/FindDepartment/" + id;
+            DetailsDepartment detailsDepartment = new DetailsDepartment();
+            string url = "DepartmentData/FindServicesByDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DepartmentDto department = response.Content.ReadAsAsync<DepartmentDto>().Result;
-            return View(department);
+            detailsDepartment.Services = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
+            url = "DepartmentData/FindDepartment/" + id;
+            response = client.GetAsync(url).Result;
+            detailsDepartment.Department = response.Content.ReadAsAsync<DepartmentDto>().Result;
+            return View(detailsDepartment);
         }
 
         // GET: Department/New
