@@ -1,4 +1,4 @@
-﻿
+﻿@model T5_Hospital.Models.ViewModels.NewVisitation
 @{
     ViewBag.Title = "New Visitation Record";
 }
@@ -15,12 +15,22 @@
         <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" />
     </div>
     <div>
-        <label for="visitorId">VisitorID</label>
-        <input id="visitorId" type="number" min="0" step="1" name="VisitorId" />
+        <label for="visitor">Visitor</label>
+        <select id="visitor" name="VisitorId">
+            @foreach(var visitor in Model.CurrentVisitors)
+            {
+                <option value="@visitor.VisitorId">@visitor.FirstName @visitor.LastName</option>
+            }
+        </select>
     </div>
     <div>
-        <label for="patientId">PatientID</label>
-        <input id="patientId" type="number" min="0" step="1" name="PatientId" />
+        <label for="patient">Patient</label>
+        <select id="patient" name="PatientId">
+            @foreach(var patient in Model.CurrentPatients)
+            {
+                <option value="@patient.PatientId">@patient.FirstName @patient.LastName</option>
+            }
+        </select>
     </div>
     <div>
         <label for="relationToVisitor">Relation To Visitor</label>

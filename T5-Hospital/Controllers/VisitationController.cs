@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -46,7 +47,23 @@ namespace T5_Hospital.Controllers
         // GET: Visitation/New
         public ActionResult New()
         {
-            return View();
+            NewVisitation vm = new NewVisitation();
+
+            // Make request to retrieve all current patients
+            string url = "PatientData/ListPatients";
+            // Send request
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            // Store received patients in ViewModel
+            vm.CurrentPatients = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            // Make request to retrieve all current visitors
+            url = "VisitorData/ListVisitors";
+            // Send request
+            response = client.GetAsync(url).Result;
+            // Store received visitors in ViewModel
+            vm.CurrentVisitors = response.Content.ReadAsAsync<IEnumerable<VisitorDto>>().Result;
+
+            return View(vm);
         }
 
         // POST: Visitation/Create

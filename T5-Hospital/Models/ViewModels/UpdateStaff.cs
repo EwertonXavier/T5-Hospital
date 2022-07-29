@@ -7,7 +7,7 @@ namespace T5_Hospital.Models.ViewModels
 {
     public class UpdateStaff
     {
-        public IEnumerable<DepartmentDto> AvailableDepartments;
-        public StaffDto SelectedStaff;
+        public IEnumerable<DepartmentDto> AvailableDepartments { get; set; }
+        public StaffDto SelectedStaff { get; set; }
     }
 }
