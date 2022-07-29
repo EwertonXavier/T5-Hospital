@@ -91,12 +91,32 @@ namespace T5_Hospital.Controllers
         // GET: Visitation/Edit/5
         public ActionResult Edit(int id)
         {
+            // Create a new UpdateVisitation ViewModel to store the current Visitation Record to be added
+            //  and all of the Current Visitors and Patients
+            UpdateVisitation vm = new UpdateVisitation();
+
+            // Make a request to get the specified visitation record data
             string url = "VisitationData/FindVisitation/" + id;
-
+            // Set request
             HttpResponseMessage response = client.GetAsync(url).Result;
-            VisitationDto visitationDto = response.Content.ReadAsAsync<VisitationDto>().Result;
+            // Store visitation record data in ViewModel
+            vm.VisitationRecord = response.Content.ReadAsAsync<VisitationDto>().Result;
 
-            return View(visitationDto);
+            // Make request to retrieve all current patients
+            url = "PatientData/ListPatients";
+            // Send request
+            response = client.GetAsync(url).Result;
+            // Store received patients in ViewModel
+            vm.CurrentPatients = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            // Make request to retrieve all current visitors
+            url = "VisitorData/ListVisitors";
+            // Send request
+            response = client.GetAsync(url).Result;
+            // Store received visitors in ViewModel
+            vm.CurrentVisitors = response.Content.ReadAsAsync<IEnumerable<VisitorDto>>().Result;
+
+            return View(vm);
         }
 
         // POST: Visitation/Edit/5

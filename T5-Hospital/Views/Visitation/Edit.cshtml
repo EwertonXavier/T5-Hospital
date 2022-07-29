@@ -1,31 +1,41 @@
-﻿@model T5_Hospital.Models.VisitationDto
+﻿@model T5_Hospital.Models.ViewModels.UpdateVisitation
 @{
     ViewBag.Title = "Edit Visitation Record";
 }
 
 <h2>Edit Visitation Record</h2>
 
-<form method="post" action="/Visitation/Edit/@Model.VisitationId">
-    <input type="hidden" name="VisitationId" value="@Model.VisitationId" />
+<form method="post" action="/Visitation/Edit/@Model.VisitationRecord.VisitationId">
+    <input type="hidden" name="VisitationId" value="@Model.VisitationRecord.VisitationId" />
     <div>
         <label for="arrivateDate">Arrival Date</label>
-        <input id="arrivateDate" type="date" min="@DateTime.Now" name="ArrivalDate" value="@Model.ArrivalDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+        <input id="arrivateDate" type="date" min="@DateTime.Now" name="ArrivalDate" value="@Model.VisitationRecord.ArrivalDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
     </div>
     <div>
         <label for="departureDate">Departure Date</label>
-        <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" value="@Model.DepartureDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+        <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" value="@Model.VisitationRecord.DepartureDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
     </div>
     <div>
-        <label for="visitorId">VisitorID</label>
-        <input id="visitorId" type="number" min="0" step="1" name="VisitorId" value="@Model.VisitorId" />
+        <label for="visitor">Visitor</label>
+        <select id="visitor" name="VisitorId">
+            @foreach (var visitor in Model.CurrentVisitors)
+            {
+                <option value="@visitor.VisitorId">@visitor.FirstName @visitor.LastName</option>
+            }
+        </select>
     </div>
     <div>
-        <label for="patientId">PatientID</label>
-        <input id="patientId" type="number" min="0" step="1" name="PatientId" value="@Model.PatientId" />
+        <label for="patient">Patient</label>
+        <select id="patient" name="PatientId">
+            @foreach (var patient in Model.CurrentPatients)
+            {
+                <option value="@patient.PatientId">@patient.FirstName @patient.LastName</option>
+            }
+        </select>
     </div>
     <div>
         <label for="relationToPatient">Relation To Visitor</label>
-        <input id="relationToPatient" type="text" name="RelationToVisitor" value="@Model.RelationToVisitor" />
+        <input id="relationToPatient" type="text" name="RelationToVisitor" value="@Model.VisitationRecord.RelationToVisitor" />
     </div>
     <div>
         <input class="btn btn-primary" type="submit" value="Update" />
