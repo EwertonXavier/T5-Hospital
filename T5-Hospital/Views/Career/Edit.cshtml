@@ -1,26 +1,39 @@
-﻿@model T5_Hospital.Models.CareerDto
+﻿@model T5_Hospital.Models.ViewModels.UpdateCareer
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit Career</h2>
-<form method="post" action="/Career/Edit/@Model.JobId">
-    <input type="hidden" name="JobId" value="@Model.JobId" />
+<form method="post" action="/Career/Edit/@Model.SelectedCareer.JobId">
+    <input type="hidden" name="JobId" value="@Model.SelectedCareer.JobId" />
     <div>
         <label for="jobTitle">Job Title</label>
-        <input id="jobTitle" name="Title" value="@Model.JobTitle" />
+        <input id="jobTitle" name="Title" value="@Model.SelectedCareer.JobTitle" />
     </div>
     <div>
         <label for="jobDescription">Job Description</label>
-        <input id="jobDescription" name="Description" value="@Model.JobDescription" />
+        <input id="jobDescription" name="Description" value="@Model.SelectedCareer.JobDescription" />
     </div>
     <div>
         <label for="experienceInYears">Experience required (in years)</label>
-        <input id="experienceInYears" name="Experience_In_Years" value="@Model.Experience_In_Years" />
+        <input id="experienceInYears" name="Experience_In_Years" value="@Model.SelectedCareer.Experience_In_Years" />
     </div>
     <div>
-        <label for="department">Choose Department: (/* This should be a dropdown */)</label>
-        <input id="department" name="DepartmentId" value="@Model.DepartmentId" />
+        <label for="department">Department: </label>
+        <select name="DepartmentId" id="department" value="@Model.SelectedCareer.DepartmentName">
+            @foreach (var department in Model.DepartmentList)
+            {
+                if (Model.SelectedCareer.DepartmentId == department.DepartmentId)
+                {
+                    <option selected value=@department.DepartmentId> @department.DepartmentName</option>
+                }
+                else
+                {
+                    <option value=@department.DepartmentId> @department.DepartmentName</option>
+                }
+
+            }
+        </select>
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Update" />

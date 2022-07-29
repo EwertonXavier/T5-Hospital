@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -41,7 +42,10 @@ namespace T5_Hospital.Controllers
         // GET: Career/Create
         public ActionResult New()
         {
-            return View();
+            string url = "DepartmentData/ListDepartments";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            return View(departments);
         }
 
         // POST: Career/Create
@@ -70,10 +74,14 @@ namespace T5_Hospital.Controllers
         // GET: Career/Edit/5
         public ActionResult Edit(int id)
         {
-            string url = "CareerData/FindCareer/" + id;
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            CareerDto careerDto = response.Content.ReadAsAsync<CareerDto>().Result;
-            return View(careerDto);
+            UpdateCareer updateCareer = new UpdateCareer();
+            string careerUrl = "CareerData/FindCareer/" + id;
+            HttpResponseMessage response = client.GetAsync(careerUrl).Result;
+            updateCareer.SelectedCareer = response.Content.ReadAsAsync<CareerDto>().Result;
+            string deptUrl = "DepartmentData/ListDepartments";
+            response = client.GetAsync(deptUrl).Result;
+            updateCareer.DepartmentList = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            return View(updateCareer);
         }
 
         // POST: Career/Edit/5

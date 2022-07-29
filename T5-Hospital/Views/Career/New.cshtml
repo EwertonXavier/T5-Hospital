@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<T5_Hospital.Models.DepartmentDto>
 @{
     ViewBag.Title = "New";
 }
@@ -18,8 +18,14 @@
         <input id="experienceInYears" name="Experience_In_Years" />
     </div>
     <div>
-        <label for="department">Choose Department: (/* This should be a dropdown */)</label>
-        <input id="department" name="DepartmentId" />
+        <label for="department">Department: </label>
+        <select name="DepartmentId" id="departmentId">
+            @foreach (var department in Model)
+            {
+                <option value="@department.DepartmentId">@department.DepartmentName</option>
+
+            }
+        </select>
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Submit" />
