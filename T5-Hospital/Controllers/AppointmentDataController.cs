@@ -50,7 +50,7 @@ namespace T5_Hospital.Controllers
         /// <param name="id"></param>
         /// <returns>IEnumerable AppointmentsForPatientDto with all appointments of a id Type</returns>
         [HttpGet]
-        public IEnumerable<AppointmentDto> ListAppointmentForPatient(int id)
+        public IEnumerable<AppointmentDto> ListAppointmentsForPatient(int id)
         {
             List<Appointment> Appointments = db.Appointments.ToList();
             List<AppointmentDto> AppointmentsForPatientDto = new List<AppointmentDto>();

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -32,12 +33,25 @@ namespace T5_Hospital.Controllers
         // GET: Patient/Details/5
         public ActionResult Details(int id)
         {
+            // Create new DetailsPatient ViewModel for storing patient details and appointments the specified patient has
+            DetailsPatient vm = new DetailsPatient();
+
+            // Retrieve specified patient info
             string url = "PatientData/FindPatient/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
-            PatientDto patient = response.Content.ReadAsAsync<PatientDto>().Result;
+            // Store the resulting patient details in ViewModel
+            vm.SelectedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
 
-            return View(patient);
+            // Retrieve list of appointments the current patient has
+            url = "AppointmentData/ListAppointmentsForPatient/" + id;
+
+            // Send request
+            response = client.GetAsync(url).Result;
+            // Store resulting appointments in VieModel
+            vm.Appointments = response.Content.ReadAsAsync<IEnumerable<AppointmentDto>>().Result;
+
+            return View(vm);
         }
 
         // GET: Patient/New
