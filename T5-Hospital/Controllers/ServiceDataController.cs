@@ -44,7 +44,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Gets a specific service by its id and display it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">takes ServiceId</param>
         /// <returns>Using db, it shows entered service by its id</returns>
         // GET: api/ServiceData/FindService/5
         [ResponseType(typeof(Service))]
@@ -103,8 +103,8 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// it takes specific service based on its id (ServiceId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="service"></param>
+        /// <param name="id">takes ServiceId</param>
+        /// <param name="service">takes Service Model</param>
         /// <returns>gives users an access to edit|update the information on a Service chosen</returns>
         // POST: api/ServiceData/UpdateService/5
         [ResponseType(typeof(void))]
@@ -145,7 +145,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a Service into the database
         /// </summary>
-        /// <param name="service"></param>
+        /// <param name="service">takes Service Model</param>
         /// <returns>it adds a news to the database table as a new data</returns>
         // POST: api/ServiceData/AddService
         [ResponseType(typeof(Service))]
@@ -167,7 +167,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any Service specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">takes ServiceId</param>
         /// <returns>Delete service from db</returns>
         // DELETE: api/ServiceData/DeleteService/5
         [ResponseType(typeof(Service))]

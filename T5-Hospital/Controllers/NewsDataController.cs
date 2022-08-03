@@ -105,8 +105,8 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// it takes specific news based on its id (NewsId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="news"></param>
+        /// <param name="id">takes NewsId</param>
+        /// <param name="news">takes News Model</param>
         /// <returns>gives users an access to edit|update the information on a News chosen</returns>
         // GET: api/NewsData/UpdateNews/5
         [ResponseType(typeof(void))]
@@ -148,7 +148,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a News into the database
         /// </summary>
-        /// <param name="news"></param>
+        /// <param name="news">takes News Model</param>
         /// <returns>it adds a news to the database table as a new data</returns>
         // POST: api/NewsData/AddNews
         [ResponseType(typeof(News))]
@@ -169,7 +169,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any news specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">takes NewsId</param>
         /// <returns>delete news (id) from db</returns>
         // DELETE: api/NewsData/DeleteNews/5
         [ResponseType(typeof(News))]
