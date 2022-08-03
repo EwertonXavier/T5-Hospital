@@ -5,14 +5,12 @@ using System.Web;
 
 namespace T5_Hospital.Models.ViewModels
 {
-    public class UpdateDonation
+    public class NewDonation
     {
-        public DonationDto SelectedDonation { get; set; }
+        //public DonationDto DonationDto { get; set; }
 
         //list of Donors
         public IEnumerable<DonorDto> DonorOptions { get; set; }
-
-        //list of Departments
         public IEnumerable<DepartmentDto> DepartmentOptions { get; set; }
     }
 }
