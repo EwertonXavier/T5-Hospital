@@ -17,6 +17,7 @@
             <th class="text-center">Donation Amount</th>
             <th class="text-center">Donation Date</th>
             <th class="text-center">Donation Description</th>
+            <th class="text-center">Department name</th>
             <th colspan="2">Controls</th>
         </tr>
     </thead>
@@ -29,6 +30,7 @@
             <td>@donation.DonationAmount</td>
             <td>@donation.DonationDate.ToString("yyyy-MM-dd")</td>
             <td>@donation.DonationDescription</td>
+            <td>@donation.DepartmentName</td>
             <td>
                 <a href="/Donation/Details/@donation.DonationId">Details</a>
             </td>

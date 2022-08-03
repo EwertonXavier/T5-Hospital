@@ -16,6 +16,10 @@
                 @* Pass through the Donor ID *@
                 <input type="text" name="donorId" value="@Model.SelectedDonation.DonorId">
             </div>
+            <div style="display:none;">
+                @* Pass through the Department ID *@
+                <input type="text" name="departmentId" value="@Model.SelectedDonation.DepartmentId">
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="DonationDescription">Donor</label>
@@ -26,6 +30,19 @@
                         @foreach (var donor in Model.DonorOptions)
                         {
                             <option class="form-control" value="@donor.DonorId">@donor.DonorFirstName @donor.DonorLastName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="DonationDescription">Department</label>
+                <div class="col-sm-6">
+
+                    <select class="form-control" name="DeptID">
+
+                        @foreach (var department in Model.DepartmentOptions)
+                        {
+                            <option class="form-control" value="@department.DepartmentId">@department.DepartmentName</option>
                         }
                     </select>
                 </div>
