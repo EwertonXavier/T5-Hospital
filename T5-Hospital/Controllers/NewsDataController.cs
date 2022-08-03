@@ -49,23 +49,58 @@ namespace T5_Hospital.Controllers
         [HttpGet]
         public IHttpActionResult FindNews(int id)
         {
-            News News = db.News.Find(id);
+            News news= db.News.Find(id);
             NewsDto NewsDto = new NewsDto()
             {
-                NewsId = News.NewsId,
-                NewsTitle = News.NewsTitle,
-                NewsContent = News.NewsContent,
-                NewsDate = News.NewsDate
+                NewsId = news.NewsId,
+                NewsTitle = news.NewsTitle,
+                NewsContent = news.NewsContent,
+                NewsDate = news.NewsDate,
+                DepartmentId = news.Department.DepartmentId,
+                DepartmentName = news.Department.Name,
+                DepartmentDescription = news.Department.Description
             };
 
-            if (News == null)
+            if (news == null)
             {
                 return NotFound();
             }
 
             return Ok(NewsDto);
+
         }
 
+
+        /// <summary>
+        /// Gets all news associated with a department
+        /// </summary>
+        /// <param name="id">DepartmentId</param>
+        /// <returns>Returns a list of news associated with a specific department by using departmentid</returns>
+        [ResponseType(typeof(NewsDto))]
+        [HttpGet]
+        public IHttpActionResult FindNewsByDepartment(int id)
+        {
+            List<News> news = db.News.Where(n => n.DepartmentId == id).ToList();
+            List<NewsDto> newsDtos = new List<NewsDto>();
+            if (news == null)
+            {
+                return NotFound();
+            }
+
+            news.ForEach(n => newsDtos.Add(new NewsDto()
+            {
+                NewsId = n.NewsId,
+                NewsTitle = n.NewsTitle,
+                NewsContent = n.NewsContent,
+                NewsDate = n.NewsDate,
+                DepartmentId = n.Department.DepartmentId,
+                DepartmentName = n.Department.Name,
+                DepartmentDescription = n.Department.Description
+
+            }));
+
+            return Ok(newsDtos);
+        }
 
         /// <summary>
         /// it takes specific news based on its id (NewsId) and edit|update it with the information changed
