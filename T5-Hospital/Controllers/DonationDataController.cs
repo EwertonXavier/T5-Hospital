@@ -36,7 +36,9 @@ namespace T5_Hospital.Controllers
                 DonationAmount = donation.DonationAmount,
                 DonorId = donation.Donor.DonorId,
                 DonorFirstName = donation.Donor.DonorFirstName,
-                DonorLastName = donation.Donor.DonorLastName
+                DonorLastName = donation.Donor.DonorLastName,
+                DepartmentId = donation.Department.DepartmentId,
+                DepartmentName = donation.Department.Name
             }));
             return DonationDtoList;
         }
@@ -50,10 +52,10 @@ namespace T5_Hospital.Controllers
         /// </returns>
         /// <param name="id">Donor ID.</param>
 
-        /// GET: api/DonationData/ListDonationsForDonor/3
+        /// GET: api/DonationData/FindDonationsForDonor/3
         [HttpGet]
         [ResponseType(typeof(DonationDto))]
-        public IHttpActionResult ListDonationsForDonor(int id)
+        public IHttpActionResult FindDonationsForDonor(int id)
         {
             List<Donation> Donations = db.Donations.Where(d => d.DonorId == id).ToList();
             List<DonationDto> DonationDtos = new List<DonationDto>();
@@ -66,15 +68,51 @@ namespace T5_Hospital.Controllers
                 DonationAmount = d.DonationAmount,
                 DonorId = d.Donor.DonorId,
                 DonorFirstName = d.Donor.DonorFirstName,
-                DonorLastName = d.Donor.DonorLastName
+                DonorLastName = d.Donor.DonorLastName,
+                DepartmentId = d.Department.DepartmentId,
+                DepartmentName = d.Department.Name
             }));
             return Ok(DonationDtos);
         }
 
         /// <summary>
+        /// Gather information about all donations related to a department
+        /// </summary>
+        /// <returns>
+        /// All Donations in the database, including the associated Department
+        /// </returns>
+        /// <param name="id">Department ID.</param>
+
+        /// GET: api/DonationData/FindDonationsForDepartment/3
+        [HttpGet]
+        [ResponseType(typeof(DonationDto))]
+        public IHttpActionResult FindDonationsForDepartment(int id)
+        {
+            //all donation to a department which matches the ID
+            List<Donation> Donations = db.Donations.Where(d => d.DepartmentId == id).ToList();
+            List<DonationDto> DonationDtos = new List<DonationDto>();
+
+            Donations.ForEach(d => DonationDtos.Add(new DonationDto()
+            {
+                DonationId = d.DonationId,
+                DonationDescription = d.DonationDescription,
+                DonationDate = d.DonationDate,
+                DonationAmount = d.DonationAmount,
+                DonorId = d.Donor.DonorId,
+                DonorFirstName = d.Donor.DonorFirstName,
+                DonorLastName = d.Donor.DonorLastName,
+                DepartmentId = d.Department.DepartmentId,
+                DepartmentName = d.Department.Name
+            }));
+            return Ok(DonationDtos);
+        }
+
+
+
+        /// <summary>
         /// Gets a specific donation by its id and display it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">donation id</param>
         /// <returns>Using database, it shows entered donation by its id</returns>
         // GET: api/DonationData/FindDonation/5
         [HttpGet]
@@ -90,7 +128,9 @@ namespace T5_Hospital.Controllers
                 DonationAmount = Donation.DonationAmount,
                 DonorId = Donation.Donor.DonorId,
                 DonorFirstName = Donation.Donor.DonorFirstName,
-                DonorLastName = Donation.Donor.DonorLastName
+                DonorLastName = Donation.Donor.DonorLastName,
+                DepartmentId = Donation.Department.DepartmentId,
+                DepartmentName = Donation.Department.Name
             };
             if (Donation == null)
             {
@@ -104,8 +144,8 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// it takes specific donation based on its id (DonationId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="donation"></param>
+        /// <param name="id">donation id</param>
+        /// <param name="donation">donation detail</param>
         /// <returns>Gives users an access to edit|update the information on a Donation chosen</returns>
         // POST: api/DonationData/UpdateDonation/5
         [HttpPost]
@@ -147,7 +187,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a donation information into the database
         /// </summary>
-        /// <param name="donation"></param>
+        /// <param name="donation">donation detail</param>
         /// <returns>It adds a donation to the database table as a new data</returns>
         // POST: api/DonationData/AddDonation
         [HttpPost]
@@ -169,7 +209,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any donation specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">donation id</param>
         /// <returns>delete donation (id) from db</returns>
         // POST: api/DonationData/DeleteDonation/5
         [HttpPost]

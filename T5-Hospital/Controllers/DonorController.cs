@@ -41,7 +41,7 @@ namespace T5_Hospital.Controllers
 
             //Showcase information about the donation related to this Donor
 
-            url = "DonationData/ListDonationsforDonor/" + id;
+            url = "DonationData/FindDonationsforDonor/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<DonationDto> RelatedDonations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
             ViewModel.RelatedDonations = RelatedDonations;

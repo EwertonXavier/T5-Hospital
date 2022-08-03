@@ -21,9 +21,11 @@ namespace T5_Hospital.Controllers
             client.BaseAddress = new Uri("https://localhost:44316/api/");
         }
 
-        // GET: Donation
+        // GET: Donation/List
         public ActionResult List()
         {
+            //objective: communicate with Donation api to retrieve a list of Donations
+
             string url = "DonationData/ListDonations";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DonationDto> donations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
@@ -33,6 +35,7 @@ namespace T5_Hospital.Controllers
         // GET: Donation/Details/5
         public ActionResult Details(int id)
         {
+            //objective: communicate with our donation data api to retrieve one donation
 
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -45,24 +48,32 @@ namespace T5_Hospital.Controllers
         // GET: Donation/New
         public ActionResult New()
         {
-            //NewDonation ViewModel = new NewDonation();
+            NewDonation ViewModel = new NewDonation();
 
             //information about all the donors in the system
-            //GET api/DonorData/ListDonors
+            //GET api/donordata/listdonors
             //string url = "";
+            //HttpResponseMessage response = client.GetAsync(url).Result;
 
-            string url = "DonorData/ListDonors/";
-            HttpResponseMessage response = client.GetAsync(url).Result;
+           string url = "donordata/listdonors/";
+           HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
-            //ViewModel.DonorOptions = DonorOptions;
+            ViewModel.DonorOptions = DonorOptions;
 
-            return View(DonorOptions);
+            url = "departmentdata/listdepartments/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            ViewModel.DepartmentOptions = DepartmentOptions;
+
+            return View(ViewModel);
         }
 
         // POST: Donation/Create
         [HttpPost]
         public ActionResult Create(Donation donation)
         {
+            //objective: add a new donation into our system using the API
+
             string url = "DonationData/AddDonation";
 
             string jsonpayload = jss.Serialize(donation);
@@ -96,6 +107,11 @@ namespace T5_Hospital.Controllers
             response = client.GetAsync(url).Result;
             IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
             ViewModel.DonorOptions = DonorOptions;
+
+            url = "departmentdata/listdepartments/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            ViewModel.DepartmentOptions = DepartmentOptions;
 
             return View(ViewModel);
         }
