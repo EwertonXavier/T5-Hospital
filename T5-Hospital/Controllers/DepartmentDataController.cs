@@ -64,29 +64,6 @@ namespace T5_Hospital.Controllers
 
         }
 
-        [ResponseType(typeof(ServiceDto))]
-        [HttpGet]
-        public IHttpActionResult FindServicesByDepartment(int id)
-        {
-            List<Service> services = db.Services.Where(s => s.DepartmentId == id).ToList();
-            List<ServiceDto> serviceDtos = new List<ServiceDto>();
-            if (services == null)
-            {
-                return NotFound();
-            }
-
-            services.ForEach(service => serviceDtos.Add(new ServiceDto()
-            {
-                ServiceId = service.ServiceId,
-                ServiceName = service.ServiceName,
-                DepartmentId = service.Department.DepartmentId,
-                DepartmentName = service.Department.Name,
-                DepartmentDescription = service.Department.Description
-
-            }));           
-
-            return Ok(serviceDtos);
-        }
 
         /// <summary>
         /// it takes specific department based on its id (DepartmentId) and edit|update it with the information changed

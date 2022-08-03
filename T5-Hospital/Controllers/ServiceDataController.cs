@@ -70,6 +70,36 @@ namespace T5_Hospital.Controllers
             return Ok(ServiceDto);
         }
 
+
+        /// <summary>
+        /// takes all services associated with the department specified by its id
+        /// </summary>
+        /// <param name="id">takes DepartmentId</param>
+        /// <returns></returns>
+        [ResponseType(typeof(ServiceDto))]
+        [HttpGet]
+        public IHttpActionResult FindServicesByDepartment(int id)
+        {
+            List<Service> services = db.Services.Where(s => s.DepartmentId == id).ToList();
+            List<ServiceDto> serviceDtos = new List<ServiceDto>();
+            if (services == null)
+            {
+                return NotFound();
+            }
+
+            services.ForEach(service => serviceDtos.Add(new ServiceDto()
+            {
+                ServiceId = service.ServiceId,
+                ServiceName = service.ServiceName,
+                DepartmentId = service.Department.DepartmentId,
+                DepartmentName = service.Department.Name,
+                DepartmentDescription = service.Department.Description
+
+            }));
+
+            return Ok(serviceDtos);
+        }
+
         /// <summary>
         /// it takes specific service based on its id (ServiceId) and edit|update it with the information changed
         /// </summary>

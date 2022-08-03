@@ -74,7 +74,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Gets all news associated with a department
         /// </summary>
-        /// <param name="id">DepartmentId</param>
+        /// <param name="id">takin DepartmentId</param>
         /// <returns>Returns a list of news associated with a specific department by using departmentid</returns>
         [ResponseType(typeof(NewsDto))]
         [HttpGet]
