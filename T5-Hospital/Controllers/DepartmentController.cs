@@ -33,7 +33,7 @@ namespace T5_Hospital.Controllers
         // GET: Department/Details/5
         public ActionResult Details(int id)
         {
-            DetailsDepartment detailsDepartment = new DetailsDepartment();
+            DetailsDepartmentServices detailsDepartment = new DetailsDepartmentServices();
             string url = "DepartmentData/FindServicesByDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             detailsDepartment.Services = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;

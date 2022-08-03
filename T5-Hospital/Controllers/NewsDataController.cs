@@ -42,7 +42,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Gets a specific new by its id and display it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">takes newsId to display specific news</param>
         /// <returns>Using database, it shows entered news by its id</returns>
         // GET: api/NewsData/FindNews/5
         [ResponseType(typeof(NewsDto))]
