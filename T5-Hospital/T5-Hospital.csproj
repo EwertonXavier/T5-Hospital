@@ -272,6 +272,10 @@
     <Compile Include="Migrations\202208031359259_NewsAndDepartment.designer.cs">
       <DependentUpon>202208031359259_NewsAndDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208031717182_DonationAndDepartment.cs" />
+    <Compile Include="Migrations\202208031717182_DonationAndDepartment.designer.cs">
+      <DependentUpon>202208031717182_DonationAndDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -505,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208031359259_NewsAndDepartment.resx">
       <DependentUpon>202208031359259_NewsAndDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031717182_DonationAndDepartment.resx">
+      <DependentUpon>202208031717182_DonationAndDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

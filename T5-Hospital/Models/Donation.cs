@@ -19,6 +19,10 @@ namespace T5_Hospital.Models
         public int DonorId { get; set; }
         public virtual Donor Donor { get; set; }
 
+        [ForeignKey("Department")]
+        public int DepartmentId { get; set; }
+        public virtual Department Department { get; set; }
+
     }
 
     public class DonationDto
@@ -31,5 +35,8 @@ namespace T5_Hospital.Models
         public int DonorId { get; set; }
         public string DonorFirstName { get; set; }
         public string DonorLastName { get; set; }
+
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
     }
