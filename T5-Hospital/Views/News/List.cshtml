@@ -23,7 +23,7 @@
                 <tr>
                     <td>@news.NewsTitle</td>
                     <td>@news.NewsContent</td>
-                    <td>@news.NewsDate</td>
+                    <td>@news.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]</td>
                     <td>
                         <a href="/News/Details/@news.NewsId">Details</a>
                     </td>

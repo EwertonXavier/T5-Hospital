@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<T5_Hospital.Models.DepartmentDto>
 @{
     ViewBag.Title = "New";
 }
@@ -16,6 +16,17 @@
     <div>
         <label for="newsDate">Date</label>
         <input type="date" id="newsDate" name="NewsDate" />
+    </div>
+    <div>
+        <label for="departmentId">Department:</label>
+        <select name="DepartmentId" id="departmentId">
+            @foreach (var department in Model)
+            {
+                <option value="@department.DepartmentId">@department.DepartmentName</option>
+
+            }
+        </select>
+
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Submit" />

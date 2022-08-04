@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5_Hospital.Models;
+using T5_Hospital.Models.ViewModels;
 
 namespace T5_Hospital.Controllers
 {
@@ -40,7 +41,10 @@ namespace T5_Hospital.Controllers
         // GET: News/New
         public ActionResult New()
         {
-            return View();
+            string url = "DepartmentData/ListDepartments";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            return View(departments);
         }
 
         // POST: News/Create
@@ -69,10 +73,15 @@ namespace T5_Hospital.Controllers
         // GET: News/Edit/5
         public ActionResult Edit(int id)
         {
-            string url = "NewsData/FindNews/" + id;
+            UpdateNews vm = new UpdateNews();
+            string url = "DepartmentData/ListDepartments";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            NewsDto newsDto = response.Content.ReadAsAsync<NewsDto>().Result;
-            return View(newsDto);
+            vm.RelatedDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            url = "NewsData/FindNews/" + id;
+            response = client.GetAsync(url).Result;
+            vm.SelectedNews = response.Content.ReadAsAsync<NewsDto>().Result;
+
+            return View(vm);
         }
 
         // POST: News/Edit/5

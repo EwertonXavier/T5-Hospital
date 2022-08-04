@@ -15,5 +15,5 @@
 </div>
 <p>@Model.NewsTitle</p>
 <p>@Model.NewsContent</p>
-<p>@Model.NewsDate</p>
+<p>@Model.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]</p>
 <p>Department: <a href="/Department/Details/@Model.DepartmentId">@Model.DepartmentName</a></p>

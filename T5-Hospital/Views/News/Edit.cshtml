@@ -1,22 +1,39 @@
-﻿@model T5_Hospital.Models.NewsDto
+﻿@model T5_Hospital.Models.ViewModels.UpdateNews
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
-<form method="post" action="/News/Edit/@Model.NewsId">
-    <input type="hidden" name="NewsId" value="@Model.NewsId" />
+<form method="post" action="/News/Edit/@Model.SelectedNews.NewsId">
+    <input type="hidden" name="NewsId" value="@Model.SelectedNews.NewsId" />
     <div>
         <label for="newsTitle">News Title</label>
-        <input id="newsTitle" name="NewsTitle" value="@Model.NewsTitle" />
+        <input id="newsTitle" name="NewsTitle" value="@Model.SelectedNews.NewsTitle" />
     </div>
     <div>
         <label for="newsContent">Content</label>
-        <input id="newsContent" name="NewsContent" value="@Model.NewsContent" />
+        <input id="newsContent" name="NewsContent" value="@Model.SelectedNews.NewsContent" />
     </div>
     <div>
         <label for="newsDate">Date</label>
-        <input id="newsDate" name="NewsDate" type="date" value="@Model.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+        <input id="newsDate" name="NewsDate" type="date" value="@Model.SelectedNews.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+    </div>
+    <div>
+        <label for="departmentId">Department:</label>
+        <select name="DepartmentId" id="departmentId" value="@Model.SelectedNews.DepartmentName">
+            @foreach (var department in Model.RelatedDepartments)
+            {
+                if (Model.SelectedNews.DepartmentId == department.DepartmentId)
+                {
+                    <option selected value=@department.DepartmentId> @department.DepartmentName</option>
+                }
+                else
+                {
+                    <option value=@department.DepartmentId> @department.DepartmentName</option>
+                }
+
+            }
+        </select>
     </div>
     <div>
         <input class="btn btn-default" type="submit" value="Update" />
