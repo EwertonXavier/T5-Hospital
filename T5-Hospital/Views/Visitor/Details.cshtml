@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.VisitorDto
+﻿@model T5_Hospital.Models.ViewModels.DetailsVisitor
 @{
     ViewBag.Title = "Visitor Details";
 }
@@ -6,10 +6,39 @@
 <h2>Visitor Details</h2>
 
 <a class="btn btn-default" href="/Visitor/List">Go back</a>
-<a class="btn btn-primary" href="/Visitor/Edit/@Model.VisitorId">Edit</a>
-<a class="btn btn-danger" href="/Visitor/Remove/@Model.VisitorId">Remove</a>
+<a class="btn btn-primary" href="/Visitor/Edit/@Model.SelectedVisitor.VisitorId">Edit</a>
+<a class="btn btn-danger" href="/Visitor/Remove/@Model.SelectedVisitor.VisitorId">Remove</a>
 <br />
 <br />
 
-<b>First Name:</b><p>@Model.FirstName</p>
-<b>Last Name:</b><p>@Model.LastName</p>
+<b>First Name:</b><p>@Model.SelectedVisitor.FirstName</p>
+<b>Last Name:</b><p>@Model.SelectedVisitor.LastName</p>
+
+<br />
+<br />
+<h3>Patients Visiting</h3>
+<a class="btn btn-primary" href="/Patient/New">New Patient</a>
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th class="text-center">Patient</th>
+            <th class="text-center">Relation To Visitor</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model.PatientsVisiting)
+        {
+            <tr>
+                <td>@patient.PatientFirstName</td>
+                <td>@patient.RelationToVisitor</td>
+                <td>
+                    <a href="/Visitation/Details/@patient.VisitationId">Details</a>
+                </td>
+                <td>
+                    <a href="/Visitation/Remove/@patient.VisitationId">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

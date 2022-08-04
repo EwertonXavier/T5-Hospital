@@ -44,7 +44,7 @@
         }
     </tbody>
 </table>
-
+<br />
 <h3>Patient Visitors</h3>
 <a class="btn btn-primary" href="/Visitor/New">New Visitor</a>
 <table class="table table-hover text-center">
@@ -52,8 +52,6 @@
         <tr>
             <th class="text-center">Visitor</th>
             <th class="text-center">Relation To Visitor</th>
-            <th class="text-center">Arrival Date</th>
-            <th class="text-center">Departure Date</th>
             <th colspan="2">Controls</th>
         </tr>
     </thead>
@@ -63,8 +61,6 @@
         <tr>
             <td>@visitor.VisitorFirstName</td>
             <td>@visitor.RelationToVisitor</td>
-            <td>@visitor.ArrivalDate</td>
-            <td>@visitor.DepartureDate</td>
             <td>
                 <a href="/Visitation/Details/@visitor.VisitationId">Details</a>
             </td>
