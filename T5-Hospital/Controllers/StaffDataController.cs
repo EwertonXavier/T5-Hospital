@@ -49,6 +49,7 @@ namespace T5_Hospital.Controllers
         /// Retrieves information from Staff Table and returns a specific Staff member
         /// Route: GET: api/StaffsData/FindStaff/5
         /// </summary>
+        /// <param name="id">StaffID</param>
         /// <returns>
         /// StaffDto
         /// </returns>
@@ -80,6 +81,8 @@ namespace T5_Hospital.Controllers
         /// Edit a specific Staff member information from Staff Table
         /// Route: POST: api/StaffData/UpdateStaff/5
         /// </summary>
+        /// <param name="id">StaffID</param>
+        /// <param name="staff">StaffID with new info</param>
         /// <returns>
         /// Http StatusCode
         /// </returns>
@@ -124,6 +127,7 @@ namespace T5_Hospital.Controllers
         /// Add a new Staff member in the Staff Table
         /// Route: POST: api/StaffData/AddStaff
         /// </summary>
+        ///  <param name="staff">Staff info to be added</param>
         /// <returns>
         /// Http StatusCode
         /// </returns>
@@ -142,11 +146,14 @@ namespace T5_Hospital.Controllers
             return CreatedAtRoute("DefaultApi", new { id = staff.Id }, staff);
         }
 
+            
+
 
         /// <summary>
         /// Remove a specific Staff member from the Staff Table
         /// Route: POST: api/StaffData/DeleteStaff/5
         /// </summary>
+        /// <param name="id">StaffID to be Deleted</param>
         /// <returns>
         /// Http StatusCode
         /// </returns>
@@ -164,6 +171,31 @@ namespace T5_Hospital.Controllers
             db.SaveChanges();
 
             return Ok();
+        }
+        /// <summary>
+        ///  API to find all staff members where staff.departmentId == departmentId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IEnumerable<StaffDto> Returns all staff members for a department of id received as parameter</returns>
+        [HttpGet]
+        public IEnumerable<StaffDto> FindStaffsForDepartment(int id)
+        {
+            //DB.staff is the name of the Dataset we created in the Identity model
+            List<Staff> StaffList = db.Staff.Where(s => s.DepartmentId == id).ToList();
+            List<StaffDto> StaffDtoList = new List<StaffDto>();
+            StaffList.ForEach(staff =>
+           StaffDtoList.Add(new StaffDto()
+           {
+               Id = staff.Id,
+               Name = staff.Name,
+               Email = staff.Email,
+               DepartmentId = staff.Department.DepartmentId,
+               DepartmentName = staff.Department.Name,
+               DepartmentDescription = staff.Department.Description
+
+           }));
+
+            return StaffDtoList;
         }
 
         protected override void Dispose(bool disposing)

@@ -22,7 +22,7 @@ namespace T5_Hospital.Controllers
         /// Access the appointment table on the database to retrieve all appointments
         /// Return a list of all appointments
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of all appointments</returns>
         [HttpGet]
         public IEnumerable<AppointmentDto> ListAppointment()
         {
@@ -47,7 +47,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// This endpoint returns a list of all appointments for a patient of the id received as parameter
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Patient Id</param>
         /// <returns>IEnumerable AppointmentsForPatientDto with all appointments of a id Type</returns>
         [HttpGet]
         public IEnumerable<AppointmentDto> ListAppointmentsForPatient(int id)
@@ -86,7 +86,7 @@ namespace T5_Hospital.Controllers
         /// GET: api/AppointmentData/FindAppointment/5
         /// Access the appointment table on the database to retrieve a specific appointments
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Appointment Id</param>
         /// <returns>Data transfer object of the found appointment</returns>
 
         [ResponseType(typeof(AppointmentDto))]
@@ -120,9 +120,9 @@ namespace T5_Hospital.Controllers
         /// POST: api/AppointmentData/UpdateAppointment/5
         /// Update information from an appointment on the database
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="appointment"></param>
-        /// <returns>StatusCode</returns>
+        /// <param name="id">Appointment Id</param>
+        /// <param name="appointment">Updated appointment information</param>
+        /// <returns>StatusCode for update result</returns>
 
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -163,8 +163,8 @@ namespace T5_Hospital.Controllers
         /// POST: api/AppointmentData/AddAppointment
         /// Adds a new appointment to the database
         /// </summary>
-        /// <param name="appointment"></param>
-        /// <returns></returns>
+        /// <param name="appointment">new Appointment information</param>
+        /// <returns>The new created appointment</returns>
         [ResponseType(typeof(Appointment))]
         [HttpPost]
         public IHttpActionResult AddAppointment(Appointment appointment)
@@ -185,8 +185,8 @@ namespace T5_Hospital.Controllers
         /// POST: api/AppointmentData/DeleteAppointment/5
         /// Delete an appointment from the database
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Appointment ID</param>
+        /// <returns>StatusCode</returns>
         [ResponseType(typeof(Appointment))]
         [HttpPost]
         public IHttpActionResult DeleteAppointment(int id)
