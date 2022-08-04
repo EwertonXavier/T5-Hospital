@@ -43,8 +43,9 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Gets a specific career by its id and display it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Career Id.</param>
         /// <returns>Using db, it shows entered career by its id</returns>
+        
         // GET: api/CareerData/FindCareer/5
         [ResponseType(typeof(CareerDto))]
         [HttpGet]
@@ -71,11 +72,40 @@ namespace T5_Hospital.Controllers
         }
 
         /// <summary>
+        ///Gets a list of careers of a particular department
+        /// </summary>
+        /// <param name="id">Department Id.</param>
+        /// <returns>list of careers with department details</returns>
+
+        // GET: api/CareerData/FindCareersForDepartment/5
+        [ResponseType(typeof(CareerDto))]
+        [HttpGet]
+        public IHttpActionResult FindCareersForDepartment(int id)
+        {
+            List<Career> careers = db.Careers.Where(career => career.DepartmentId == id).ToList();
+            List<CareerDto> careerDtos = new List<CareerDto>();
+
+            careers.ForEach(career => careerDtos.Add(new CareerDto()
+            {
+                JobId = career.JobId,
+                JobTitle = career.Title,
+                JobDescription = career.Description,
+                Experience_In_Years = career.Experience_In_Years,
+                DepartmentId = career.Department.DepartmentId,
+                DepartmentName = career.Department.Name,
+                DepartmentDescription = career.Department.Description
+            }));
+
+            return Ok(careerDtos);
+        }
+
+        /// <summary>
         /// it takes specific career based on its id (JobId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="career"></param>
+        /// <param name="id">Career Id.</param>
+        /// <param name="career">Updated Career details</param>
         /// <returns>gives users an access to edit|update the information on a career chosen</returns>
+        
         // POST: api/CareerData/UpdateCareer/5
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -115,8 +145,9 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a Career into the database
         /// </summary>
-        /// <param name="career"></param>
+        /// <param name="career">New career detail.</param>
         /// <returns>it adds a career to the database table as a new data</returns>
+        
         // POST: api/CareerData/AddCareer
         [ResponseType(typeof(Career))]
         [HttpPost]
@@ -136,8 +167,9 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any Career specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Career Id.</param>
         /// <returns>Delete career from db</returns>
+        
         // DELETE: api/CareerData/DeleteCareer/5
         [ResponseType(typeof(Career))]
         [HttpPost]

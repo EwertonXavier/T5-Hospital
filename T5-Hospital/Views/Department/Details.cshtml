@@ -15,12 +15,49 @@
 </div>
 <p>Department name: @Model.Department.DepartmentName</p>
 <p>Description : @Model.Department.DepartmentDescription</p>
-<h3>List of services</h3>
+
+<h3>Services</h3>
 @foreach (var service in Model.Services)
 {
-<div>
-    <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a>
-</div>
+    <div>
+        <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a>
+    </div>
+
+}
+
+<h3>Staffs - API under construction</h3>
+@*@foreach (var service in Model.Services)
+{
+    <div>
+        <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a>
+    </div>
+
+}*@
+
+<h3>News</h3>
+@foreach (var news in Model.News)
+{
+    <div>
+        <a target="_blank" href="/News/Details/@news.NewsId">@news.NewsTitle</a>
+    </div>
+
+}
+
+<h3>Donations</h3>
+@foreach (var donation in Model.Donations)
+{
+    <div>
+        <a target="_blank" href="/Donation/Details/@donation.DonationId">@donation.DonationAmount on @donation.DonationDate</a>
+    </div>
+
+}
+
+<h3>Careers</h3>
+@foreach (var career in Model.Careers)
+{
+    <div>
+        <a target="_blank" href="/Career/Details/@career.JobId">@career.JobTitle</a>
+    </div>
 
 }
 

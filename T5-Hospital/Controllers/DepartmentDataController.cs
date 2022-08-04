@@ -40,8 +40,9 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Gets a specific department by its id and display it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Department Id.</param>
         /// <returns>Using database, it shows entered department by its id</returns>
+        
         // GET: api/DepartmentData/FindDepartment/5
         [ResponseType(typeof(DepartmentDto))]
         [HttpGet]
@@ -68,9 +69,10 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// it takes specific department based on its id (DepartmentId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="department"></param>
+        /// <param name="id">Department Id.</param>
+        /// <param name="department">Updated Department Details</param>
         /// <returns>gives users an access to edit|update the information on a News chosen</returns>
+        /// 
         // GET: api/DepartmentData/UpdateDepartment/5
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -110,7 +112,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a Department into the database
         /// </summary>
-        /// <param name="department"></param>
+        /// <param name="department">New Department Detail</param>
         /// <returns>it adds a department to the database table as a new data</returns>
         // POST: api/DepartmentData/AddDepartment
         [ResponseType(typeof(Department))]
@@ -131,7 +133,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any department specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Department Id.</param>
         /// <returns>delete department (id) from db</returns>
         // DELETE: api/DepartmentData/DeleteDepartment/5
         [ResponseType(typeof(Department))]
