@@ -73,7 +73,64 @@ namespace T5_Hospital.Controllers
 
             return Ok(VisitationDto);
         }
+        [HttpGet]
+        [ResponseType(typeof(VisitationDto))]
+        public IHttpActionResult FindVisitationsByPatient(int id)
+        {
+            // Search visitation records that match the same patient id as queried id
+            List<Visitation> Visitations = db.Visitations.Where(record => record.PatientId == id).ToList();
+            List<VisitationDto> VisitationDtos = new List<VisitationDto>();
 
+            Visitations.ForEach(v => VisitationDtos.Add(new VisitationDto()
+            {
+                VisitationId = v.VisitationId,
+                ArrivalDate = v.ArrivalDate,
+                DepartureDate = v.DepartureDate,
+                RelationToVisitor = v.RelationToVisitor,
+                PatientId = v.Patient.PatientId,
+                PatientFirstName = v.Patient.FirstName,
+                VisitorId = v.Visitor.VisitorId,
+                VisitorFirstName = v.Visitor.FirstName
+            }));
+
+            if (Visitations == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(VisitationDtos);
+            }
+        }
+        [HttpGet]
+        [ResponseType(typeof(VisitationDto))]
+        public IHttpActionResult FindVisitationsByVisitor(int id)
+        {
+            // Search visitation records that match the same visitor id as queried id
+            List<Visitation> Visitations = db.Visitations.Where(record => record.VisitorId == id).ToList();
+            List<VisitationDto> VisitationDtos = new List<VisitationDto>();
+
+            Visitations.ForEach(v => VisitationDtos.Add(new VisitationDto()
+            {
+                VisitationId = v.VisitationId,
+                ArrivalDate = v.ArrivalDate,
+                DepartureDate = v.DepartureDate,
+                RelationToVisitor = v.RelationToVisitor,
+                PatientId = v.Patient.PatientId,
+                PatientFirstName = v.Patient.FirstName,
+                VisitorId = v.Visitor.VisitorId,
+                VisitorFirstName = v.Visitor.FirstName
+            }));
+
+            if (Visitations == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(VisitationDtos);
+            }
+        }
         /// <summary>
         /// Changes the visitation record data, specified by the id, with the passed in visitation data
         /// </summary>
