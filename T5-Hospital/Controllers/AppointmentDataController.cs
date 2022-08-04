@@ -50,7 +50,7 @@ namespace T5_Hospital.Controllers
         /// <param name="id">Patient Id</param>
         /// <returns>IEnumerable AppointmentsForPatientDto with all appointments of a id Type</returns>
         [HttpGet]
-        public IEnumerable<AppointmentDto> ListAppointmentsForPatient(int id)
+        public IEnumerable<AppointmentDto> FindAppointmentsForPatient(int id)
         {
             List<Appointment> Appointments = db.Appointments.ToList();
             List<AppointmentDto> AppointmentsForPatientDto = new List<AppointmentDto>();
@@ -80,6 +80,33 @@ namespace T5_Hospital.Controllers
             }
             return AppointmentsForPatientDto;
 
+        }
+
+        /// <summary>
+        /// API to return all Appointments for a Specific Staff member of id passed as parameter
+        /// </summary>
+        /// <param name="id">StaffId</param>
+        /// <returns>List of Appointments IEnumerable<AppointmentDto></returns>
+        [HttpGet]
+        public IEnumerable<AppointmentDto> FindAppointmentsForStaff(int id)
+        {
+            List<Appointment> Appointments = db.Appointments.Where(a => a.StaffId==id).ToList();
+            List<AppointmentDto> AppointmentsDto = new List<AppointmentDto>();
+
+            Appointments.ForEach(appointment => AppointmentsDto.Add(new AppointmentDto()
+            {
+                Id = appointment.Id,
+                AppointmentDate = appointment.AppointmentDate,
+                PatientId = appointment.Patient.PatientId,
+                PatientFirstName = appointment.Patient.FirstName,
+                PatientLastName = appointment.Patient.LastName,
+                PatientDateOfBirth = appointment.Patient.DateOfBirth,
+                StaffId = appointment.Staff.Id,
+                StaffName = appointment.Staff.Name,
+                StaffDepartmentId = appointment.Staff.DepartmentId,
+                StaffDepartmentName = appointment.Staff.Department.Name
+            }));
+            return AppointmentsDto;
         }
 
         /// <summary>

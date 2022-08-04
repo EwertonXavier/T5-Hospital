@@ -43,7 +43,7 @@ namespace T5_Hospital.Controllers
             vm.SelectedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
 
             // Retrieve list of appointments the current patient has
-            url = "AppointmentData/ListAppointmentsForPatient/" + id;
+            url = "AppointmentData/FindAppointmentsForPatient/" + id;
             // Send request
             response = client.GetAsync(url).Result;
             // Store resulting appointments in VieModel
