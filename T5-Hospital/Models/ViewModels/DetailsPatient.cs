@@ -9,5 +9,6 @@ namespace T5_Hospital.Models.ViewModels
     {
         public PatientDto SelectedPatient { get; set; }
         public IEnumerable<AppointmentDto> Appointments { get; set; }
+        public IEnumerable<VisitationDto> Visitors { get; set; }
     }
 }

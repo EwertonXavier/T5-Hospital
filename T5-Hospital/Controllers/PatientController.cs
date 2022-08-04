@@ -38,18 +38,23 @@ namespace T5_Hospital.Controllers
 
             // Retrieve specified patient info
             string url = "PatientData/FindPatient/" + id;
-
             HttpResponseMessage response = client.GetAsync(url).Result;
             // Store the resulting patient details in ViewModel
             vm.SelectedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
 
             // Retrieve list of appointments the current patient has
             url = "AppointmentData/ListAppointmentsForPatient/" + id;
-
             // Send request
             response = client.GetAsync(url).Result;
             // Store resulting appointments in VieModel
             vm.Appointments = response.Content.ReadAsAsync<IEnumerable<AppointmentDto>>().Result;
+
+            // Retrieve a list of all of the visitors a patient has
+            url = "VisitationData/FindVisitationsByPatient/" + id;
+            // Send request
+            response = client.GetAsync(url).Result;
+            // Store resulting visitation records in ViewModel
+            vm.Visitors = response.Content.ReadAsAsync<IEnumerable<VisitationDto>>().Result;
 
             return View(vm);
         }

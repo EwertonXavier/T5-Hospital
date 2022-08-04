@@ -17,7 +17,7 @@
 <br />
 <br />
 <h3>Patient Appointments</h3>
-<a class="btn btn-primary" href="/Appointment/New">Add Appointment</a>
+<a class="btn btn-primary" href="/Appointment/New">New Appointment</a>
 <table class="table table-hover text-center">
     <thead>
         <tr>
@@ -30,18 +30,48 @@
     <tbody>
         @foreach (var appointment in Model.Appointments)
         {
+            <tr>
+                <td>@appointment.AppointmentDate</td>
+                <td>@appointment.StaffName</td>
+                <td>@appointment.StaffDepartmentName</td>
+                <td>
+                    <a href="/Appointment/Details/@appointment.Id">Details</a>
+                </td>
+                <td>
+                    <a href="/Appointment/Remove/@appointment.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Patient Visitors</h3>
+<a class="btn btn-primary" href="/Visitor/New">New Visitor</a>
+<table class="table table-hover text-center">
+    <thead>
         <tr>
-            <td>@appointment.AppointmentDate</td>
-            <td>@appointment.StaffName</td>
-            <td>@appointment.StaffDepartmentName</td>
+            <th class="text-center">Visitor</th>
+            <th class="text-center">Relation To Visitor</th>
+            <th class="text-center">Arrival Date</th>
+            <th class="text-center">Departure Date</th>
+            <th colspan="2">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var visitor in Model.Visitors)
+        {
+        <tr>
+            <td>@visitor.VisitorFirstName</td>
+            <td>@visitor.RelationToVisitor</td>
+            <td>@visitor.ArrivalDate</td>
+            <td>@visitor.DepartureDate</td>
             <td>
-                <a href="/Appointment/Details/@appointment.Id">Details</a>
+                <a href="/Visitation/Details/@visitor.VisitationId">Details</a>
             </td>
             <td>
-                <a href="/Appointment/Remove/@appointment.Id">Remove</a>
+                <a href="/Visitation/Remove/@visitor.VisitationId">Remove</a>
             </td>
         </tr>
         }
     </tbody>
 </table>
-

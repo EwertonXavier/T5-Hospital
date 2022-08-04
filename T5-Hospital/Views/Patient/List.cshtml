@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<T5_Hospital.Models.PatientDto>
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "List Patients";
 }
 
 <h2>List Patients</h2>
 <div>
-    <a class="btn btn-primary" href="/Patient/New">Add Patient</a>
+    <a class="btn btn-primary" href="/Patient/New">New Patient</a>
+    <a class="btn btn-success" href="/Visitation/List">View Visitations</a>
+    <a class="btn btn-info" href="/Visitor/List">View Visitors</a>
 </div>
 
 <table class="table table-hover text-center">
