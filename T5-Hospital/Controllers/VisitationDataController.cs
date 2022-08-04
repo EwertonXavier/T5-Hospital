@@ -73,6 +73,12 @@ namespace T5_Hospital.Controllers
 
             return Ok(VisitationDto);
         }
+
+        /// <summary>
+        /// Searches for all of the Visitation Records that belong to the Patient specified by the passed in unique id
+        /// </summary>
+        /// <param name="id">Integer id of the Patient to search for in the Visitation Records</param>
+        /// <returns>List of Visitation Records that belong to a Patient</returns>
         [HttpGet]
         [ResponseType(typeof(VisitationDto))]
         public IHttpActionResult FindVisitationsByPatient(int id)
@@ -102,6 +108,12 @@ namespace T5_Hospital.Controllers
                 return Ok(VisitationDtos);
             }
         }
+
+        /// <summary>
+        /// Searches for all of the Visitation Records that belong to the Visitor specified by the passed in unique id
+        /// </summary>
+        /// <param name="id">Integer id of the Visitor to search for in the Visitation Records</param>
+        /// <returns>List of Visitation Records that belong to a Patient</returns>
         [HttpGet]
         [ResponseType(typeof(VisitationDto))]
         public IHttpActionResult FindVisitationsByVisitor(int id)
