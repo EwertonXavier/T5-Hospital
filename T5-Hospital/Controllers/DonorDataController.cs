@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -69,8 +70,8 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// it takes specific donor based on its id (DonorId) and edit|update it with the information changed
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="donor"></param>
+        /// <param name="id">donor id</param>
+        /// <param name="donor">donor detail</param>
         /// <returns>Gives users an access to edit|update the information on a Donor chosen</returns>
         // POst: api/DonorData/UpdateDonor/5
         [HttpPost]
@@ -86,7 +87,6 @@ namespace T5_Hospital.Controllers
             {
                 return BadRequest();
             }
-
             db.Entry(donor).State = EntityState.Modified;
 
             try
@@ -112,7 +112,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Add a donor into the database
         /// </summary>
-        /// <param name="donor"></param>
+        /// <param name="donor">donor detail</param>
         /// <returns>It adds a donor to the database table as a new data</returns>
         // POST: api/DonorData/AddDonor
         [HttpPost]
@@ -134,7 +134,7 @@ namespace T5_Hospital.Controllers
         /// <summary>
         /// Delete any donor specified with its id number
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">donor id</param>
         /// <returns>delete donor (id) from db</returns>
         // POST: api/DonorData/DeleteDonor/5
         [HttpPost]

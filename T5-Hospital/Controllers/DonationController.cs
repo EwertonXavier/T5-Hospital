@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -99,31 +100,31 @@ namespace T5_Hospital.Controllers
 
             string url = "DonationData/FindDonation/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonationDto SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
-            ViewModel.SelectedDonation = SelectedDonation;
+            ViewModel.SelectedDonation = response.Content.ReadAsAsync<DonationDto>().Result;
+          
 
             //all donors to choose from when updating this Donation
             url = "DonorData/ListDonors/";
             response = client.GetAsync(url).Result;
-            IEnumerable<DonorDto> DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
-            ViewModel.DonorOptions = DonorOptions;
+            ViewModel.DonorOptions = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
 
-            url = "departmentdata/listdepartments/";
+            url = "DepartmentData/ListDepartments/";
             response = client.GetAsync(url).Result;
-            IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
-            ViewModel.DepartmentOptions = DepartmentOptions;
+            ViewModel.DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            
 
             return View(ViewModel);
         }
 
         // POST: Donation/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Donation donation)
+        public ActionResult Edit(int id, DonationDto donation)
         {
             string url = "DonationData/UpdateDonation/" + id;
 
 
             string jsonpayload = jss.Serialize(donation);
+            Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";

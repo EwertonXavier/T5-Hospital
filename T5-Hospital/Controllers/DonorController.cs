@@ -36,15 +36,15 @@ namespace T5_Hospital.Controllers
             DetailsDonor ViewModel = new DetailsDonor();
             string url = "DonorData/FindDonor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DonorDto SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
-            ViewModel.SelectedDonor = SelectedDonor;
+            ViewModel.SelectedDonor = response.Content.ReadAsAsync<DonorDto>().Result;
+         
 
             //Showcase information about the donation related to this Donor
 
-            url = "DonationData/FindDonationsforDonor/" + id;
+            url = "DonationData/FindDonationsForDonor/" + id;
             response = client.GetAsync(url).Result;
-            IEnumerable<DonationDto> RelatedDonations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
-            ViewModel.RelatedDonations = RelatedDonations;
+            ViewModel.RelatedDonations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
+           
 
             return View(ViewModel);
 
