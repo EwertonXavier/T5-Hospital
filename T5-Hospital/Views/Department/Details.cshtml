@@ -25,14 +25,14 @@
 
 }
 
-<h3>Staffs - API under construction</h3>
-@*@foreach (var service in Model.Services)
+<h3>Staffs</h3>
+@foreach (var staff in Model.Staffs)
 {
     <div>
-        <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a>
+        <a target="_blank" href="/Staff/Details/@staff.Id">@staff.Name</a>
     </div>
 
-}*@
+}
 
 <h3>News</h3>
 @foreach (var news in Model.News)

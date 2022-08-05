@@ -34,21 +34,27 @@ namespace T5_Hospital.Controllers
         public ActionResult Details(int id)
         {
             DetailsDepartmentServices detailsDepartmentServices = new DetailsDepartmentServices();
+
             string url = "ServiceData/FindServicesByDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             detailsDepartmentServices.Services = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
-            
-            // ADD staffdata.findStaffsForDepartment here once the api is ready **** IMPORTANT *****
+
+            url = "StaffData/FindStaffsForDepartment/" + id;
+            response = client.GetAsync(url).Result;
+            detailsDepartmentServices.Staffs = response.Content.ReadAsAsync<IEnumerable<StaffDto>>().Result;
 
             url = "NewsData/FindNewsByDepartment/" + id;
             response = client.GetAsync(url).Result;
             detailsDepartmentServices.News = response.Content.ReadAsAsync<IEnumerable<NewsDto>>().Result;
+
             url = "DonationData/FindDonationsForDepartment/" + id;
             response = client.GetAsync(url).Result;
             detailsDepartmentServices.Donations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
+
             url = "CareerData/FindCareersForDepartment/" + id;
             response = client.GetAsync(url).Result;
             detailsDepartmentServices.Careers = response.Content.ReadAsAsync<IEnumerable<CareerDto>>().Result;
+
             url = "DepartmentData/FindDepartment/" + id;
             response = client.GetAsync(url).Result;
             detailsDepartmentServices.Department = response.Content.ReadAsAsync<DepartmentDto>().Result;
