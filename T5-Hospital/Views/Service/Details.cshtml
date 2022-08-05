@@ -3,18 +3,48 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-<div>
-    <a class="btn btn-default" href="/Service/List">Go back</a>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Service Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">Service Name</div>
+                        <div class="col-sm-8">@Model.ServiceName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Details</div>
+                        <div class="col-sm-8">@Model.ServiceDetail</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a class="btn btn-primary" href="/Service/Edit/@Model.ServiceId">Edit</a>
-</div>
-<div>
-    <a class="btn btn-danger" href="/Service/Remove/@Model.ServiceId">Remove</a>
-</div>
-<p>Service: @Model.ServiceName</p>
-<p>Service Details: @Model.ServiceDetail</p>
-<p>Department: <a href="/Department/Details/@Model.DepartmentId">@Model.DepartmentName</a></p>
 
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Departments Offering this Service</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="/Department/Details/@Model.DepartmentId">@Model.DepartmentName</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <a class="btn btn-info" href="/Service/Edit/@Model.ServiceId" role="button">Update</a>
+    <a class="btn btn-danger" href="/Service/Remove/@Model.ServiceId" role="button">Delete</a>
+</div>
+
+<div class="col-md-12 text-center">
+    <a class="primary-light" href="/Service/List">Back to list</a>
+</div>
 
