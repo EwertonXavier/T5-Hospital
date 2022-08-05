@@ -4,6 +4,7 @@
 }
 
 <h2>Edit</h2>
+<a href="/Staff/Details/@Model.SelectedStaff.Id" class="btn btn-primary">Back</a>
 <form method="post" action="/Staff/Edit/@Model.SelectedStaff.Id">
     <input type="hidden" name="Id" value="@Model.SelectedStaff.Id" />
     <div>
@@ -24,7 +25,7 @@
     </div>
     <div>
         <label for="Name">Staff Name</label>
-        <input id="Name" name="Name" value=@Model.SelectedStaff.Name />
+        <input id="Name" name="Name" value="@Model.SelectedStaff.Name" />
     </div>
     <div>
         <label for="Email">Staff Email</label>

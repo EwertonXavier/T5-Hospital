@@ -21,6 +21,7 @@ namespace T5_Hospital.Controllers
             client.BaseAddress = new Uri("https://localhost:44316/api/");
         }
 
+        [Authorize]
         // GET: Donor
         public ActionResult List()
         {
@@ -30,6 +31,7 @@ namespace T5_Hospital.Controllers
             return View(donors);
         }
 
+        [Authorize]
         // GET: Donor/Details/5
         public ActionResult Details(int id)
         {
@@ -50,12 +52,14 @@ namespace T5_Hospital.Controllers
 
         }
 
+        [Authorize]
         // GET: Donor/New
         public ActionResult New()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Donor/Create
         [HttpPost]
         public ActionResult Create(Donor donor)
@@ -78,6 +82,7 @@ namespace T5_Hospital.Controllers
             }
         }
 
+        [Authorize]
         // GET: Donor/Edit/5
         public ActionResult Edit(int id)
         {
@@ -89,6 +94,7 @@ namespace T5_Hospital.Controllers
             return View(SelectedDonor);
         }
 
+        [Authorize]
         // POST: Donor/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Donor donor)
@@ -112,6 +118,7 @@ namespace T5_Hospital.Controllers
             }
         }
 
+        [Authorize]
         // POST: Donor/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
@@ -129,6 +136,8 @@ namespace T5_Hospital.Controllers
             }
         }
 
+
+        [Authorize]
         // GET: Donor/Remove/5
         public ActionResult Remove(int id)
         {
