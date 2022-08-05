@@ -1,4 +1,4 @@
-﻿@model T5_Hospital.Models.StaffDto
+﻿@model T5_Hospital.Models.ViewModels.DetailsStaff
 @{
     ViewBag.Title = "Details";
 }
@@ -8,17 +8,47 @@
     <a class="btn btn-default" href="/Staff/List">Go back</a>
 </div>
 <div>
-    <a class="btn btn-primary" href="/Staff/Edit/@Model.Id">Edit</a>
+    <a class="btn btn-primary" href="/Staff/Edit/@Model.staff.Id">Edit</a>
 </div>
 <div>
-    <a class="btn btn-danger" href="/Staff/Remove/@Model.Id">Remove</a>
+    <a class="btn btn-danger" href="/Staff/Remove/@Model.staff.Id">Remove</a>
 </div>
 
-<p>ID: @Model.Id</p>
-<p>Name: @Model.Name</p>
-<p>Email: @Model.Email</p>
-<p>Department Id:@Model.DepartmentId</p>
-<p>Department Name:@Model.DepartmentName</p>
-<p>Department Description: @Model.DepartmentDescription</p>
+<p>ID: @Model.staff.Id</p>
+<p>Name: @Model.staff.Name</p>
+<p>Email: @Model.staff.Email</p>
+<p>Department Id:@Model.staff.DepartmentId</p>
+<p>Department Name:@Model.staff.DepartmentName</p>
+<p>Department Description: @Model.staff.DepartmentDescription</p>
+
+
+<h3>Appointments</h3>
+<table class="table table-hover text-center">
+    <theader>
+        <tr >
+            <th class="text-center">Date:</th>
+            <th class="text-center">Patient First Name:</th>
+            <th class="text-center">Patient Last Name:</th>
+            <th class="text-center" colspan="2">Controls</th>
+
+        </tr>
+    </theader>
+    <tbody>
+        @foreach (var appointment in Model.appointments)
+        {
+        <tr>
+            <td>@appointment.AppointmentDate</td>
+            <td>@appointment.PatientFirstName</td>
+            <td>@appointment.PatientLastName</td>
+            <td>
+                <a href="/Patient/details/@appointment.PatientId">View Patient</a>
+            </td>
+            <td>
+                <a href="/Appointment/Remove/@appointment.Id">Remove Apointment</a>
+            </td>
+        </tr>
+    }</tbody>
+
+</table>
 
 

@@ -34,11 +34,15 @@ namespace T5_Hospital.Controllers
         // GET: Staff/Details/5
         public ActionResult Details(int id)
         { 
+            DetailsStaff detailsStaff = new DetailsStaff();
             string url = "StaffData/FindStaff/"+id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             StaffDto staff = response.Content.ReadAsAsync <StaffDto>().Result;
-
-            return View(staff);
+            detailsStaff.staff = staff;
+            url = "AppointmentData/FindAppointmentsForStaff/" + id;
+            response = client.GetAsync(url).Result;
+            detailsStaff.appointments = response.Content.ReadAsAsync <IEnumerable<AppointmentDto>>().Result;
+            return View(detailsStaff);
         }
 
         // GET: Staff/New
