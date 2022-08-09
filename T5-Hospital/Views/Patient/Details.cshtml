@@ -3,71 +3,84 @@
     ViewBag.Title = "Patient Details";
 }
 
-<h2>Patient Details</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Patient Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">First Name</div>
+                        <div class="col-sm-8">@Model.SelectedPatient.FirstName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Last Name</div>
+                        <div class="col-sm-8">@Model.SelectedPatient.LastName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Date of Birth</div>
+                        <div class="col-sm-8">
+                            <time datetime="@Model.SelectedPatient.DateOfBirth">@Model.SelectedPatient.DateOfBirth</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a class="btn btn-default" href="/Patient/List">Go back</a>
-<a class="btn btn-primary" href="/Patient/Edit/@Model.SelectedPatient.PatientId">Edit</a>
-<a class="btn btn-danger" href="/Patient/Remove/@Model.SelectedPatient.PatientId">Remove</a>
-<br />
-<br />
 
-<b>Patient Name: </b><p>@Model.SelectedPatient.FirstName @Model.SelectedPatient.LastName</p>
-<b>Patient DoB: </b><time datetime="@Model.SelectedPatient.DateOfBirth">@Model.SelectedPatient.DateOfBirth</time>
 
-<br />
-<br />
-<h3>Patient Appointments</h3>
-<a class="btn btn-primary" href="/Appointment/New">New Appointment</a>
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th class="text-center">Appointment Date</th>
-            <th class="text-center">Staff Name</th>
-            <th class="text-center">Department</th>
-            <th colspan="2">Controls</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var appointment in Model.Appointments)
-        {
-            <tr>
-                <td>@appointment.AppointmentDate</td>
-                <td>@appointment.StaffName</td>
-                <td>@appointment.StaffDepartmentName</td>
-                <td>
-                    <a href="/Appointment/Details/@appointment.Id">Details</a>
-                </td>
-                <td>
-                    <a href="/Appointment/Remove/@appointment.Id">Remove</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<br />
-<h3>Patient Visitors</h3>
-<a class="btn btn-primary" href="/Visitor/New">New Visitor</a>
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th class="text-center">Visitor</th>
-            <th class="text-center">Relation To Visitor</th>
-            <th colspan="2">Controls</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var visitor in Model.Visitors)
-        {
-        <tr>
-            <td>@visitor.VisitorFirstName</td>
-            <td>@visitor.RelationToVisitor</td>
-            <td>
-                <a href="/Visitation/Details/@visitor.VisitationId">Details</a>
-            </td>
-            <td>
-                <a href="/Visitation/Remove/@visitor.VisitationId">Remove</a>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Patient Appointments</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var appointment in Model.Appointments)
+                             {
+                                <a href="/Appointment/Details/@appointment.Id">@appointment.AppointmentDate</a><br />
+                             }
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a href="/Appointment/New">New Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Patient Visitors</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var visitor in Model.Visitors)
+                            {
+                                <a href="/Visitation/Details/@visitor.VisitationId">@visitor.VisitorFirstName</a><br />
+                            }
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a href="/Visitor/New">New Visitor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a class="btn btn-info" href="/Patient/Edit/@Model.SelectedPatient.PatientId">Edit</a>
+    <a class="btn btn-danger" href="/Patient/Remove/@Model.SelectedPatient.PatientId">Remove</a>
+</div>
+<div class="col-md-12 text-center">
+    <a href="/Patient/List">Back to list</a>
+</div>
