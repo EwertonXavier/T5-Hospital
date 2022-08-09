@@ -23,6 +23,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitation/List
+        [Authorize]
         public ActionResult List()
         {
             string url = "VisitationData/ListVisitations";
@@ -34,6 +35,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitation/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             string url = "VisitationData/FindVisitation/" + id;
@@ -45,6 +47,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitation/New
+        [Authorize]
         public ActionResult New()
         {
             NewVisitation vm = new NewVisitation();
@@ -67,6 +70,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Visitation/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Visitation visitation)
         {
@@ -89,6 +93,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitation/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             // Create a new UpdateVisitation ViewModel to store the current Visitation Record to be added
@@ -120,6 +125,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Visitation/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, Visitation visitation)
         {
@@ -142,6 +148,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitation/Remove/5
+        [Authorize]
         public ActionResult Remove(int id)
         {
             Debug.WriteLine(id);
@@ -154,6 +161,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Visitation/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -171,6 +179,7 @@ namespace T5_Hospital.Controllers
                 return RedirectToAction("Error");
             }
         }
+        [Authorize]
         public ActionResult Error()
         {
             return View();

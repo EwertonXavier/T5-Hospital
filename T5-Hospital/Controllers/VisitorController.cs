@@ -20,7 +20,9 @@ namespace T5_Hospital.Controllers
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44316/api/");
         }
+
         // GET: Visitor/List
+        [Authorize]
         public ActionResult List()
         {
             string url = "VisitorData/ListVisitors";
@@ -32,6 +34,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitor/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             // Create an instance of the DetailsVisitor ViewModel
@@ -56,12 +59,14 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitor/New
+        [Authorize]
         public ActionResult New()
         {
             return View();
         }
 
         // POST: Visitor/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Visitor visitor)
         {
@@ -84,6 +89,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitor/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             string url = "VisitorData/FindVisitor/" + id;
@@ -95,6 +101,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Visitor/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, Visitor visitor)
         {
@@ -117,6 +124,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Visitor/Remove/5
+        [Authorize]
         public ActionResult Remove(int id)
         {
             string url = "VisitorData/FindVisitor/" + id;
@@ -128,6 +136,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Visitor/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -145,6 +154,7 @@ namespace T5_Hospital.Controllers
                 return RedirectToAction("Error");
             }
         }
+        [Authorize]
         public ActionResult Error()
         {
             return View();
