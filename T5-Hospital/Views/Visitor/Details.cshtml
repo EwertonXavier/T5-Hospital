@@ -3,42 +3,53 @@
     ViewBag.Title = "Visitor Details";
 }
 
-<h2>Visitor Details</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Visitor Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">First Name</div>
+                        <div class="col-sm-8">@Model.SelectedVisitor.FirstName</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Last Name</div>
+                        <div class="col-sm-8">@Model.SelectedVisitor.LastName</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a class="btn btn-default" href="/Visitor/List">Go back</a>
-<a class="btn btn-primary" href="/Visitor/Edit/@Model.SelectedVisitor.VisitorId">Edit</a>
-<a class="btn btn-danger" href="/Visitor/Remove/@Model.SelectedVisitor.VisitorId">Remove</a>
-<br />
-<br />
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Patients Visitor is Visiting</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var patient in Model.PatientsVisiting)
+                            {
+                            <a href="/Visitation/Details/@patient.VisitationId">@patient.PatientFirstName</a>
+                            }
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a href="/Patient/New">New Patient</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<b>First Name:</b><p>@Model.SelectedVisitor.FirstName</p>
-<b>Last Name:</b><p>@Model.SelectedVisitor.LastName</p>
-
-<br />
-<br />
-<h3>Patients Visiting</h3>
-<a class="btn btn-primary" href="/Patient/New">New Patient</a>
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th class="text-center">Patient</th>
-            <th class="text-center">Relation To Visitor</th>
-            <th colspan="2">Controls</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var patient in Model.PatientsVisiting)
-        {
-            <tr>
-                <td>@patient.PatientFirstName</td>
-                <td>@patient.RelationToVisitor</td>
-                <td>
-                    <a href="/Visitation/Details/@patient.VisitationId">Details</a>
-                </td>
-                <td>
-                    <a href="/Visitation/Remove/@patient.VisitationId">Remove</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="text-center">
+    <a class="btn btn-info" href="/Visitor/Edit/@Model.SelectedVisitor.VisitorId">Edit</a>
+    <a class="btn btn-danger" href="/Visitor/Remove/@Model.SelectedVisitor.VisitorId">Remove</a>
+</div>
+<div class="col-md-12 text-center">
+    <a href="/Visitor/List">Back to list</a>
+</div>
