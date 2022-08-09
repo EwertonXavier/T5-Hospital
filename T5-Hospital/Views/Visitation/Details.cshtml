@@ -3,26 +3,50 @@
     ViewBag.Title = "Visitation Record Details";
 }
 
-<h2>Visitation Record Details</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Visitation Record Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">Patient</div>
+                        <div class="col-sm-8">
+                            <a href="/Patient/Details/@Model.PatientId">@Model.PatientFirstName</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Visitor</div>
+                        <div class="col-sm-8">
+                            <a href="/Visitor/Details/@Model.VisitorId">@Model.VisitorFirstName</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Relation to Visitor</div>
+                        <div class="col-sm-8">@Model.RelationToVisitor</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Arrival Date</div>
+                        <div class="col-sm-8">
+                            <time datetime="@Model.ArrivalDate">@Model.ArrivalDate</time>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Departure Date</div>
+                        <div class="col-sm-8">
+                            <time datetime="@Model.DepartureDate">@Model.DepartureDate</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a class="btn btn-default" href="/Visitation/List">Go back</a>
-<a class="btn btn-primary" href="/Visitation/Edit/@Model.VisitationId">Edit</a>
-<a class="btn btn-danger" href="/Visitation/Remove/@Model.VisitationId">Remove</a>
-<br />
-<br />
-
-<div>
-    <b>Visitor:</b> <p>@Model.VisitorFirstName</p>
+<div class="text-center">
+    <a class="btn btn-info" href="/Visitation/Edit/@Model.VisitationId">Edit</a>
+    <a class="btn btn-danger" href="/Visitation/Remove/@Model.VisitationId">Remove</a>
 </div>
-<div>
-    <b>Patient:</b><p>@Model.PatientFirstName</p>
-</div>
-<div>
-    <b>Relation to Visitor: </b><p>@Model.RelationToVisitor</p>
-</div>
-<div>
-    <b>Date of Arrival: </b><p>@Model.ArrivalDate</p>
-</div>
-<div>
-    <b>Date of Departure: </b><p>@Model.DepartureDate</p>
+<div class="col-md-12 text-center">
+    <a href="/Visitation/List">Back to list</a>
 </div>
