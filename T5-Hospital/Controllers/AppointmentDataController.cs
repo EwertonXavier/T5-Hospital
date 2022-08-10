@@ -86,7 +86,7 @@ namespace T5_Hospital.Controllers
         /// API to return all Appointments for a Specific Staff member of id passed as parameter
         /// </summary>
         /// <param name="id">StaffId</param>
-        /// <returns>List of Appointments IEnumerable<AppointmentDto></returns>
+        /// <returns>List of Appointments IEnumerable AppointmentDto</returns>
         [HttpGet]
         public IEnumerable<AppointmentDto> FindAppointmentsForStaff(int id)
         {

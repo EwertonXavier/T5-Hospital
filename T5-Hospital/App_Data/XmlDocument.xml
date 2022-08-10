@@ -496,7 +496,13 @@
             <param name="id">Patient Id</param>
             <returns>IEnumerable AppointmentsForPatientDto with all appointments of a id Type</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:T5_Hospital.Controllers.AppointmentDataController.FindAppointmentsForStaff(System.Int32)" -->
+        <member name="M:T5_Hospital.Controllers.AppointmentDataController.FindAppointmentsForStaff(System.Int32)">
+            <summary>
+            API to return all Appointments for a Specific Staff member of id passed as parameter
+            </summary>
+            <param name="id">StaffId</param>
+            <returns>List of Appointments IEnumerable AppointmentDto</returns>
+        </member>
         <member name="M:T5_Hospital.Controllers.AppointmentDataController.FindAppointment(System.Int32)">
             <summary>
             GET: api/AppointmentData/FindAppointment/5
@@ -826,7 +832,15 @@
             This datacontroller is going to retrieve data from the database upon request from the view Controllers
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:T5_Hospital.Controllers.StaffDataController.ListStaff" -->
+        <member name="M:T5_Hospital.Controllers.StaffDataController.ListStaff">
+            <summary>
+            Retrieves information from Staff Table and returns a list of Staff
+            Route: GET: api/StaffData/ListStaff
+            </summary>
+            <returns>
+            Lists StaffDto
+            </returns>
+        </member>
         <member name="M:T5_Hospital.Controllers.StaffDataController.FindStaff(System.Int32)">
             <summary>
             Retrieves information from Staff Table and returns a specific Staff member
@@ -868,7 +882,15 @@
             Http StatusCode
             </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:T5_Hospital.Controllers.StaffDataController.FindStaffsForDepartment(System.Int32)" -->
+        <member name="M:T5_Hospital.Controllers.StaffDataController.FindStaffsForDepartment(System.Int32)">
+            <summary>
+             API to find all staff members where staff.departmentId == departmentId
+            </summary>
+            <param name="id"></param>
+            <returns>
+            IEnumerable StaffDto Returns all staff members for a department of id received as parameter
+            </returns>
+        </member>
         <member name="M:T5_Hospital.Controllers.VisitationDataController.ListVisitations">
             <summary>
             Retrieves all of the visitation records in the database

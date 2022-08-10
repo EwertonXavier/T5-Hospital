@@ -18,12 +18,13 @@ namespace T5_Hospital.Controllers
     public class StaffDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
         /// <summary>
         /// Retrieves information from Staff Table and returns a list of Staff
         /// Route: GET: api/StaffData/ListStaff
         /// </summary>
         /// <returns>
-        /// List<StaffDto> 
+        /// Lists StaffDto
         /// </returns>
         [HttpGet]
         public IEnumerable<StaffDto> ListStaff()
@@ -176,7 +177,9 @@ namespace T5_Hospital.Controllers
         ///  API to find all staff members where staff.departmentId == departmentId
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>IEnumerable<StaffDto> Returns all staff members for a department of id received as parameter</returns>
+        /// <returns>
+        /// IEnumerable StaffDto Returns all staff members for a department of id received as parameter
+        /// </returns>
         [HttpGet]
         public IEnumerable<StaffDto> FindStaffsForDepartment(int id)
         {
