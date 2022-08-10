@@ -21,7 +21,7 @@ namespace T5_Hospital.Controllers
             client.BaseAddress = new Uri("https://localhost:44316/api/");
         }
 
-
+        [Authorize]
         // GET: Staff
         public ActionResult List()
         {
@@ -32,6 +32,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Staff/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         { 
             DetailsStaff detailsStaff = new DetailsStaff();
@@ -56,6 +57,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Staff/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Staff staff)
         {
@@ -78,6 +80,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Staff/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateStaff updateStaff = new UpdateStaff();
@@ -94,6 +97,7 @@ namespace T5_Hospital.Controllers
 
         // POST: Staff/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(int id, Staff staff)
         {
             string url = "StaffData/UpdateStaff/" + id;
@@ -116,6 +120,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Staff/Remove/5
+        [Authorize]
         public ActionResult Remove(int id)
         {
             string url = "StaffData/FindStaff/" + id;
@@ -126,6 +131,7 @@ namespace T5_Hospital.Controllers
 
         // POST: Staff/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             string url = "StaffData/DeleteStaff/" + id;

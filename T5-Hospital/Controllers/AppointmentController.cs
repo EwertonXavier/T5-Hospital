@@ -22,6 +22,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Appointment
+        [Authorize]
         public ActionResult List()
         {
 
@@ -32,6 +33,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Appointment/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             string url = "AppointmentData/FindAppointment/" +id;
@@ -41,6 +43,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Appointment/New
+        [Authorize]
         public ActionResult New()
         {
             NewAppointment newAppointment = new NewAppointment();
@@ -56,6 +59,7 @@ namespace T5_Hospital.Controllers
 
         // POST: Appointment/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Appointment appointment)
         {
             string url = "AppointmentData/AddAppointment";
@@ -76,6 +80,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Appointment/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateAppointment updateAppointment = new UpdateAppointment();
@@ -94,6 +99,7 @@ namespace T5_Hospital.Controllers
 
         // POST: Appointment/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(int id, Appointment appointment)
         {
             string url = "AppointmentData/UpdateAppointment/" + id;
@@ -115,6 +121,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Appointment/Remove/5
+        [Authorize]
         public ActionResult Remove(int id)
         {
             string url = "AppointmentData/FindAppointment/" + id;
@@ -125,6 +132,7 @@ namespace T5_Hospital.Controllers
 
         // POST: Appointment/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             string url = "AppointmentData/DeleteAppointment/" + id;
