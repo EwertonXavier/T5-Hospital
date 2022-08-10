@@ -3,40 +3,58 @@
     ViewBag.Title = "New Visitation Record";
 }
 
-<h2>New Visitation Record</h2>
-
-<form method="post" action="/Visitation/Create">
-    <div>
-        <label for="arrivateDate">Arrival Date</label>
-        <input id="arrivateDate" type="date" min="@DateTime.Now" name="ArrivalDate" />
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">New Visitation Record</h2>
+                <form class="form-horizontal" method="post" action="/Visitation/Create">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="arrivateDate">Arrival Date</label>
+                        <div class="col-sm-8">
+                            <input id="arrivateDate" class="form-control" type="date" min="@DateTime.Now" name="ArrivalDate" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="departureDate">Departure Date</label>
+                        <div class="col-sm-8">
+                            <input id="departureDate" class="form-control" type="date" min="@DateTime.Now" name="DepartureDate" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="patient">Patient</label>
+                        <div class="col-sm-8">
+                            <select id="patient" class="form-control" name="PatientId">
+                                @foreach (var patient in Model.CurrentPatients)
+                                {
+                                    <option value="@patient.PatientId">@patient.FirstName @patient.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="visitor">Visitor</label>
+                        <div class="col-sm-8">
+                            <select id="visitor" class="form-control" name="VisitorId">
+                                @foreach (var visitor in Model.CurrentVisitors)
+                                {
+                                    <option value="@visitor.VisitorId">@visitor.FirstName @visitor.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="relationToVisitor">Relation To Visitor</label>
+                        <div class="col-sm-8">
+                            <input id="relationToVisitor" class="form-control" type="text" name="RelationToVisitor" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="btn btn-primary" type="submit" value="Submit" />
+                        <a href="/Visitation/List" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="departureDate">Departure Date</label>
-        <input id="departureDate" type="date" min="@DateTime.Now" name="DepartureDate" />
-    </div>
-    <div>
-        <label for="visitor">Visitor</label>
-        <select id="visitor" name="VisitorId">
-            @foreach(var visitor in Model.CurrentVisitors)
-            {
-                <option value="@visitor.VisitorId">@visitor.FirstName @visitor.LastName</option>
-            }
-        </select>
-    </div>
-    <div>
-        <label for="patient">Patient</label>
-        <select id="patient" name="PatientId">
-            @foreach(var patient in Model.CurrentPatients)
-            {
-                <option value="@patient.PatientId">@patient.FirstName @patient.LastName</option>
-            }
-        </select>
-    </div>
-    <div>
-        <label for="relationToVisitor">Relation To Visitor</label>
-        <input id="relationToVisitor" type="text" name="RelationToVisitor" />
-    </div>
-    <div>
-        <input class="btn btn-primary" type="submit" value="Submit" />
-    </div>
-</form>
+</div>
