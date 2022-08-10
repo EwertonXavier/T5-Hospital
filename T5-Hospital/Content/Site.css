@@ -9,6 +9,11 @@ body {
     padding-bottom: 20px;
 }
 
+.my-2{
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

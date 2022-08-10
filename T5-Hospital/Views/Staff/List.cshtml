@@ -8,6 +8,13 @@
     <a class="btn btn-primary" href="/Staff/New">Add Staff</a>
     <a href="/Department/List" class="btn btn-info">View Departments</a>
 </div>
+<div class="text-center my-2">
+    <form action="/Staff/List" method="get">
+        <input type="text" id="search" placeholder="Ex. Dogukan" name="StaffSearch" />
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
 
 <table class="table table-hover text-center">
     <thead>

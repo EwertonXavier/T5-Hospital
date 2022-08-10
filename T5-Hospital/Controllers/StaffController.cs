@@ -23,11 +23,16 @@ namespace T5_Hospital.Controllers
 
         [Authorize]
         // GET: Staff
-        public ActionResult List()
+        public ActionResult List(string StaffSearch = null)
         {
             string url = "StaffData/ListStaff";
+            if (StaffSearch != null)
+            {
+                url += "?StaffSearch=" + StaffSearch;
+            }
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<StaffDto> staffs = response.Content.ReadAsAsync<IEnumerable<StaffDto>>().Result;
+
             return View(staffs);
         }
 

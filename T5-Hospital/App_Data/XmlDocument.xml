@@ -832,7 +832,7 @@
             This datacontroller is going to retrieve data from the database upon request from the view Controllers
             </summary>
         </member>
-        <member name="M:T5_Hospital.Controllers.StaffDataController.ListStaff">
+        <member name="M:T5_Hospital.Controllers.StaffDataController.ListStaff(System.String)">
             <summary>
             Retrieves information from Staff Table and returns a list of Staff
             Route: GET: api/StaffData/ListStaff

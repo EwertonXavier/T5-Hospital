@@ -27,11 +27,22 @@ namespace T5_Hospital.Controllers
         /// Lists StaffDto
         /// </returns>
         [HttpGet]
-        public IEnumerable<StaffDto> ListStaff()
+        public IEnumerable<StaffDto> ListStaff( string StaffSearch=null)
         {
+
+
             //DB.staff is the name of the Dataset we created in the Identity model
-            List<Staff> StaffList = db.Staff.ToList();
+           
+            List<Staff> StaffList;
             List<StaffDto> StaffDtoList = new List<StaffDto>();
+            if(StaffSearch != null)
+            {
+                StaffList = db.Staff.Where(Staff =>Staff.Name == StaffSearch).ToList();
+            }
+            else
+            {
+               StaffList = db.Staff.ToList();
+            }
             StaffList.ForEach(staff =>
            StaffDtoList.Add(new StaffDto() {
                Id = staff.Id,

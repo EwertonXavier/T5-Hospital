@@ -5,8 +5,10 @@
 
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-        <h2 class="text-center">Add Staff</h2>
-        <form class="form-horizontal" method="post" action="/Staff/Create">
+        <div class="list-group">
+            <div class="list-group-item">
+            <h2 class="text-center">Add Staff</h2>
+            <form class="form-horizontal" method="post" action="/Staff/Create">
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="departmentId">Department:</label>
                     <select name="DepartmentId" id="departmentId">
@@ -31,9 +33,13 @@
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
                         <input class="btn btn-default" type="submit" value="Submit" />
+                        <a href="/Staff/List/" class="btn btn-primary">Cancel</a>
                     </div>
-                </div>
-        </form>
 
+                </div>
+            </form>
+
+        </div>
+        </div>
     </div>
 </div>
