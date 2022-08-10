@@ -3,22 +3,37 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Patient</h2>
-<form method="post" action="/Patient/Edit/@Model.PatientId">
-    <input type="hidden" name="PatientId" value="@Model.PatientId" />
-    <div>
-        <label for="patientFName">First Name</label>
-        <input id="patientFName" type="text" name="FirstName" value="@Model.FirstName" />
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Edit Patient</h2>
+                <form class="form-horizontal" method="post" action="/Patient/Edit/@Model.PatientId">
+                    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="patientFName">First Name</label>
+                        <div class="col-sm-8">
+                            <input id="patientFName" class="form-control" type="text" name="FirstName" value="@Model.FirstName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="patientLName">Last Name</label>
+                        <div class="col-sm-8">
+                            <input id="patientLName" class="form-control" type="text" name="LastName" value="@Model.LastName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="patientDOB">Date of Birth</label>
+                        <div class="col-sm-8">
+                            <input id="patientDOB" type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToUniversalTime().ToString("u").Split(' ')[0]" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="btn btn-primary" type="submit" value="Update" />
+                        <a href="/Patient/Details/@Model.PatientId" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="patientLName">Last Name</label>
-        <input id="patientLName" type="text" name="LastName" value="@Model.LastName" />
-    </div>
-    <div>
-        <label for="patientDOB">Date of Birth</label>
-        <input id="patientDOB" type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToUniversalTime().ToString("u").Split(' ')[0]" />
-    </div>
-    <div>
-        <input class="btn btn-primary" type="submit" value="Update" />
-    </div>
-</form>
+</div>
