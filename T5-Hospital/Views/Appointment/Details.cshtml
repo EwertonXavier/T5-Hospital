@@ -3,28 +3,38 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <a class="btn btn-default" href="/Appointment/List">Go back</a>
-</div>
-<div>
-    <a class="btn btn-primary" href="/Appointment/Edit/@Model.Id">Edit</a>
-</div>
-<div>
-    <a class="btn btn-danger" href="/Appointment/Remove/@Model.Id">Remove</a>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Appointment Details</h2>
+                <div class="list-group-item-text">
+                    <div class="row">
+                        <div class="col-sm-4">Patient Name</div>
+                        <div class="col-sm-8"><a href="/Patient/Details/@Model.PatientId">@Model.PatientFirstName @Model.PatientLastName</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Staff Name</div>
+                        <div class="col-sm-8"><a href="/Staff/Details/@Model.StaffId">@Model.StaffName</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Date</div>
+                        <div class="col-sm-8">@Model.AppointmentDate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<p>ID: @Model.Id</p>
-<p>Staff Name: @Model.StaffName </p>
-<p>Department: @Model.StaffDepartmentName</p>
-<p>Patient First Name:@Model.PatientFirstName</p>
-<p>Patient Last Name:@Model.PatientLastName</p>
-<p>Appointment Date:@Model.AppointmentDate</p>
-<div>
-    <a href="/Patient/Details/@Model.PatientId">View Patient</a>
+<div class="text-center">
+    <a class="btn btn-info" href="/Appointment/Edit/@Model.Id" role="button">Update</a>
+    <a class="btn btn-danger" href="/Appointment/Remove/@Model.Id" role="button">Delete</a>
 </div>
-<div>
-    <a href="/Staff/Details/@Model.StaffId">View Staff</a>
+
+<div class="col-md-12 text-center">
+    <a class="primary-light" href="/Appointment/List">Back to list</a>
 </div>
+
 

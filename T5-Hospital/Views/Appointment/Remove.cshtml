@@ -3,13 +3,23 @@
     ViewBag.Title = "Remove";
 }
 
-<h2>Remove</h2>
-<p>Are you sure you want to remove the appointment of @Model.PatientFirstName with staff named @Model.StaffName taking place @Model.AppointmentDate?</p>
-<form method="post" action="/Appointment/Delete/@Model.Id">
-    <div>
-        <input class="btn btn-primary" type="submit" formaction="/Appointment/List" value="Go Back" />
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h2>Are you sure you want to delete this Appointment?</h2>
+        <div class="list-group">
+            <div class="list-group-item text-center">
+                <h3 class="list-group-item-text">Date:@Model.AppointmentDate</h3>
+                <p class="list-group-item-heading text-center">Patient:@Model.PatientFirstName  @Model.PatientLastName</p>
+                <p class="list-group-item-text">Staff:@Model.StaffName</p>
+
+
+            </div>
+        </div>
+        <div class="text-center">
+            <form action="/Appointment/Delete/@Model.Id" method="POST">
+                <button class="btn btn-danger" type="submit">Confirm Delete</button>
+                <a class="btn btn-default" href="/Appointment/List" role="button">Cancel</a>
+            </form>
+        </div>
     </div>
-    <div>
-        <input class="btn btn-danger" type="submit" value="Delete" />
-    </div>
-</form>
+</div>
