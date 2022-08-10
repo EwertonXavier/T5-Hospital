@@ -891,7 +891,7 @@
             IEnumerable StaffDto Returns all staff members for a department of id received as parameter
             </returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.VisitationDataController.ListVisitations">
+        <member name="M:T5_Hospital.Controllers.VisitationDataController.ListVisitations(System.String)">
             <summary>
             Retrieves all of the visitation records in the database
             </summary>

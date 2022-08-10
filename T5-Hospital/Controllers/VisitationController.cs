@@ -24,9 +24,12 @@ namespace T5_Hospital.Controllers
 
         // GET: Visitation/List
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(string VisitationSearch = null)
         {
             string url = "VisitationData/ListVisitations";
+
+            if (VisitationSearch != null)
+                url += "?VisitationSearch=" + VisitationSearch;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<VisitationDto> visitationRecords = response.Content.ReadAsAsync<IEnumerable<VisitationDto>>().Result;

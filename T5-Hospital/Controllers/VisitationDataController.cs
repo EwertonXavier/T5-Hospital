@@ -23,10 +23,16 @@ namespace T5_Hospital.Controllers
         /// <example>GET api/VisitationData/ListVisitations</example>
         /// <returns>List of VisitationDto objects</returns>
         [HttpGet]
-        public IEnumerable<VisitationDto> ListVisitations()
+        public IEnumerable<VisitationDto> ListVisitations(string VisitationSearch = null)
         {
-            List<Visitation> Visitations = db.Visitations.ToList();
+            List<Visitation> Visitations;
             List<VisitationDto> VisitationDtos = new List<VisitationDto>();
+
+            // If user has searched for a visitaiton record, check both visitor and patient names
+            if (VisitationSearch != null)
+                Visitations = db.Visitations.Where(visitation => visitation.Visitor.FirstName == VisitationSearch || visitation.Patient.FirstName == VisitationSearch).ToList();
+            else
+                Visitations = db.Visitations.ToList();
 
             Visitations.ForEach(visitation => VisitationDtos.Add(new VisitationDto()
             {
