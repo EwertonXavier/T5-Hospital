@@ -22,10 +22,15 @@ namespace T5_Hospital.Controllers
         /// <example>GET api/VisitorData/ListVisitors</example>
         /// <returns>List of VisitorDto objects</returns>
         [HttpGet]
-        public IEnumerable<VisitorDto> ListVisitors()
+        public IEnumerable<VisitorDto> ListVisitors(string VisitorSearch = null)
         {
-            List<Visitor> Visitors = db.Visitors.ToList();
+            List<Visitor> Visitors;
             List<VisitorDto> VisitorDtos = new List<VisitorDto>();
+
+            if (VisitorSearch != null)
+                 Visitors = db.Visitors.Where(visitor => visitor.FirstName == VisitorSearch).ToList();
+            else
+                 Visitors = db.Visitors.ToList();
 
             Visitors.ForEach(visitor => VisitorDtos.Add(new VisitorDto()
             {

@@ -945,7 +945,7 @@
             <example>DELETE api/VisitationData/5</example>
             <returns>Visitation object that was removed from the database</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.VisitorDataController.ListVisitors">
+        <member name="M:T5_Hospital.Controllers.VisitorDataController.ListVisitors(System.String)">
             <summary>
             Retrieves a list of Visitors stored in the database, containing basic information
             </summary>
