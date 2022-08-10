@@ -38,14 +38,14 @@
                     <h2 class="list-group-item-heading text-center">Donations Related to this Donor</h2>
                     <div class="list-group-item-text">
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 my-2">
                                 @foreach (var donation in Model.RelatedDonations)
                                 {
-                                    <a href="/Donation/Details/@donation.DonationId">$@donation.DonationAmount --- @donation.DonationDate.ToString("yyyy-MM-dd")</a><br />
+                                    <a href="/Donation/Details/@donation.DonationId">Amount: $@donation.DonationAmount --- Date: @donation.DonationDate.ToString("yyyy-MM-dd")</a><br />
                                 }
                             </div>
-                            <div class="col-sm-3">
-                                <a href="/Donation/New">Add Donation</a>
+                            <div class="col-sm-3 my-2">
+                                <a href="/Donation/New" class="btn btn-primary">Add Donation</a>
                             </div>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
 
 
     <div class="text-center">
-        <a class="btn btn-info" href="/Donor/Edit/@Model.SelectedDonor.DonorId" role="button">Update</a>
-        <a class="btn btn-danger" href="/Donor/Remove/@Model.SelectedDonor.DonorId" role="button">Delete</a>
+        <a class="btn btn-info" href="/Donor/Edit/@Model.SelectedDonor.DonorId" role="button">Edit</a>
+        <a class="btn btn-danger" href="/Donor/Remove/@Model.SelectedDonor.DonorId" role="button">Remove</a>
     </div>
 
     <div class="col-md-12 text-center">

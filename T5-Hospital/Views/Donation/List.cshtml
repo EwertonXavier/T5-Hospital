@@ -6,9 +6,15 @@
 
 <h2>List</h2>
 <div>
-    <a class="btn btn-primary" href="/Donation/New">Add Donation</a>
+    <a class="btn btn-primary" href="/Donation/New">New Donation</a>
+    <a class="btn btn-success" href="/Donor/List">View Donors</a>
 </div>
-
+<div class="text-center my-2">
+    <form action="/Donation/List" method="get">
+        <input type="text" placeholder="Search Dononations..." name="DonationSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
 <table class="table table-hover text-center">
     <thead>
         <tr>

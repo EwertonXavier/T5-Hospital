@@ -23,9 +23,13 @@ namespace T5_Hospital.Controllers
 
         [Authorize]
         // GET: Donor
-        public ActionResult List()
+        public ActionResult List(string DonorSearch = null)
         {
             string url = "DonorData/ListDonors";
+
+            if (DonorSearch != null)
+           url += "?DonorSearch=" + DonorSearch;
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DonorDto> donors = response.Content.ReadAsAsync<IEnumerable<DonorDto>>().Result;
             return View(donors);

@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using T5_Hospital.Migrations;
 using T5_Hospital.Models;
 
 namespace T5_Hospital.Controllers
@@ -25,12 +26,17 @@ namespace T5_Hospital.Controllers
         /// <returns>It returns a list of donors (DonorDto)</returns>
         // GET: api/DonorData/ListDonors
         [HttpGet]
-        public IEnumerable<DonorDto> ListDonors()
+        public IEnumerable<DonorDto> ListDonors(string DonorSearch = null)
         {
-            List<Donor> DonorList = db.Donors.ToList();
+            List<Donor> Donors;
             List<DonorDto> DonorDtoList = new List<DonorDto>();
 
-            DonorList.ForEach(donor => DonorDtoList.Add(new DonorDto()
+            if (DonorSearch != null)
+                Donors = db.Donors.Where(donor => donor.DonorFirstName == DonorSearch).ToList();
+            else
+                Donors = db.Donors.ToList();
+
+            Donors.ForEach(donor => DonorDtoList.Add(new DonorDto()
             {
                 DonorId = donor.DonorId,
                 DonorFirstName = donor.DonorFirstName,

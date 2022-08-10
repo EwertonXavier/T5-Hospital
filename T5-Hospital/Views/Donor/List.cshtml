@@ -3,9 +3,16 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List Donors</h2>
 <div>
-    <a class="btn btn-primary" href="/Donor/New">Add Donor</a>
+    <a class="btn btn-primary" href="/Donor/New">New Donor</a>
+    <a class="btn btn-success" href="/Donation/List">View Donations</a>
+</div>
+<div class="text-center my-2">
+    <form action="/Donor/List" method="get">
+        <input type="text" placeholder="Search Donors..." name="DonorSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
 </div>
 
 <table class="table table-hover text-center">

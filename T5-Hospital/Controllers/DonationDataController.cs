@@ -23,12 +23,17 @@ namespace T5_Hospital.Controllers
         /// <returns>It returns a list of donation (DonationDto)</returns>
         // GET: api/DonationData/ListDonations
         [HttpGet]
-        public IEnumerable<DonationDto> ListDonations()
+        public IEnumerable<DonationDto> ListDonations(string DonationSearch = null)
         {
-            List<Donation> DonationList = db.Donations.ToList();
+            List<Donation> Donations;
             List<DonationDto> DonationDtoList = new List<DonationDto>();
 
-            DonationList.ForEach(donation => DonationDtoList.Add(new DonationDto()
+            if (DonationSearch != null)
+                Donations = db.Donations.Where(donation => donation.Donor.DonorFirstName == DonationSearch).ToList();
+            else
+                Donations = db.Donations.ToList();
+
+            Donations.ForEach(donation => DonationDtoList.Add(new DonationDto()
             {
                 DonationId = donation.DonationId,
                 DonationDescription = donation.DonationDescription,

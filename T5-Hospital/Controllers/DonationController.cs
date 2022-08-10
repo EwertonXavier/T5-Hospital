@@ -24,11 +24,16 @@ namespace T5_Hospital.Controllers
 
         [Authorize]
         // GET: Donation/List
-        public ActionResult List()
+        public ActionResult List(string DonationSearch = null)
         {
             //objective: communicate with Donation api to retrieve a list of Donations
 
             string url = "DonationData/ListDonations";
+
+            if (DonationSearch != null)
+            url += "?DonationSearch=" + DonationSearch;
+
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DonationDto> donations = response.Content.ReadAsAsync<IEnumerable<DonationDto>>().Result;
             return View(donations);
@@ -55,9 +60,7 @@ namespace T5_Hospital.Controllers
             NewDonation ViewModel = new NewDonation();
 
             //information about all the donors in the system
-            //GET api/donordata/listdonors
-            //string url = "";
-            //HttpResponseMessage response = client.GetAsync(url).Result;
+            
 
            string url = "donordata/listdonors/";
            HttpResponseMessage response = client.GetAsync(url).Result;
