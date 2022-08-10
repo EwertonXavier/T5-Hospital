@@ -22,6 +22,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Career
+        [Authorize]
         public ActionResult List()
         {
             string url = "CareerData/ListCareers";
@@ -31,6 +32,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Career/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             string url = "CareerData/FindCareer/" + id;
@@ -40,6 +42,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Career/Create
+        [Authorize]
         public ActionResult New()
         {
             string url = "DepartmentData/ListDepartments";
@@ -49,6 +52,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Career/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Career career)
         {
@@ -72,6 +76,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Career/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateCareer updateCareer = new UpdateCareer();
@@ -85,6 +90,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Career/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, Career career)
         {
@@ -106,6 +112,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Career/Remove/5
+        [Authorize]
         public ActionResult Remove(int id)
         {
             string url = "CareerData/FindCareer/" + id;
@@ -115,6 +122,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Career/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -131,6 +139,7 @@ namespace T5_Hospital.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Error()
         {
             return View();

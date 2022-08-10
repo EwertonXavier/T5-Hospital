@@ -22,6 +22,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Department
+        [Authorize]
         public ActionResult List()
         {
             string url = "DepartmentData/ListDepartments";
@@ -31,6 +32,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Department/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             DetailsDepartmentServices detailsDepartmentServices = new DetailsDepartmentServices();
@@ -63,12 +65,14 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Department/New
+        [Authorize]
         public ActionResult New()
         {
             return View();
         }
 
         // POST: Department/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Department department)
         {
@@ -92,6 +96,7 @@ namespace T5_Hospital.Controllers
         }
 
         // GET: Department/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             string url = "DepartmentData/FindDepartment/" + id;
@@ -101,6 +106,7 @@ namespace T5_Hospital.Controllers
         }
 
         // POST: Department/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, Department department)
         {
@@ -123,9 +129,10 @@ namespace T5_Hospital.Controllers
             }
             
         }
-     
+
 
         // POST: Department/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -143,7 +150,7 @@ namespace T5_Hospital.Controllers
             
         }
 
-
+        [Authorize]
         public ActionResult Remove(int id)
         {
             string url = "DepartmentData/FindDepartment/" + id;
@@ -152,6 +159,7 @@ namespace T5_Hospital.Controllers
             return View(departmentDto);
         }
 
+        [Authorize]
         public ActionResult Error()
         {
             return View();
