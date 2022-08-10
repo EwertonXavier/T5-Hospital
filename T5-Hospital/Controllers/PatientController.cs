@@ -23,9 +23,13 @@ namespace T5_Hospital.Controllers
 
         // GET: Patient
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(string PatientSearch = null)
         {
             string url = "PatientData/ListPatients";
+
+            if (PatientSearch != null)
+                url += "?PatientSearch=" + PatientSearch;
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<PatientDto> patients = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
 

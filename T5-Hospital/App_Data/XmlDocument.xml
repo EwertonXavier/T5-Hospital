@@ -745,7 +745,7 @@
             <param name="id">takes NewsId</param>
             <returns>delete news (id) from db</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.PatientDataController.ListPatients">
+        <member name="M:T5_Hospital.Controllers.PatientDataController.ListPatients(System.String)">
             <summary>
             Retrieve a list of PatientDto objects containing the data related to each patient
             </summary>
