@@ -614,7 +614,7 @@
             <param name="id">Department Id.</param>
             <returns>delete department (id) from db</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.DonationDataController.ListDonations">
+        <member name="M:T5_Hospital.Controllers.DonationDataController.ListDonations(System.String)">
             <summary>
             Retrives all donation information from donation table and list them all
             </summary>
@@ -669,7 +669,7 @@
             <param name="id">donation id</param>
             <returns>delete donation (id) from db</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.DonorDataController.ListDonors">
+        <member name="M:T5_Hospital.Controllers.DonorDataController.ListDonors(System.String)">
             <summary>
             Retrives all donor information from donor table and list them all
             </summary>
