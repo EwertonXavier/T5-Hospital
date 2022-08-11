@@ -23,9 +23,15 @@ namespace T5_Hospital.Controllers
 
         [Authorize]
         // GET: News
-        public ActionResult List()
+        public ActionResult List(string NewsSearch = null)
         {
             string url = "NewsData/ListNews";
+
+            if (NewsSearch != null)
+            {
+                url += "?NewsSearch=" + NewsSearch;
+            }
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<NewsDto> news = response.Content.ReadAsAsync<IEnumerable<NewsDto>>().Result;
             return View(news);

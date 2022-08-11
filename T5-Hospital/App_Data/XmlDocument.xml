@@ -703,7 +703,7 @@
             <param name="id">donor id</param>
             <returns>delete donor (id) from db</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.NewsDataController.ListNews">
+        <member name="M:T5_Hospital.Controllers.NewsDataController.ListNews(System.String)">
             <summary>
             Retrieves all News from News table and list them all
             </summary>
@@ -785,7 +785,7 @@
             <example>DELETE api/PatientData/5</example>
             <returns>Patient object that was removed from the database</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.ServiceDataController.ListServices">
+        <member name="M:T5_Hospital.Controllers.ServiceDataController.ListServices(System.String)">
             <summary>
             Retrieves all Services from Services table and list them all
             </summary>

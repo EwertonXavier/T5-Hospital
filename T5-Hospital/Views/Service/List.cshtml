@@ -8,7 +8,12 @@
     <a class="btn btn-primary" href="/Service/New">Add Service</a>
     <a href="/Department/List" class="btn btn-info">View Departments</a>
 </div>
-
+<div class="text-center my-2">
+    <form action="/Service/List" method="get">
+        <input type="text" placeholder="Search Service..." name="ServiceSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
 <table class="table table-hover text-center">
     <thead>
         <tr>

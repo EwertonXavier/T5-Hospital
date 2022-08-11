@@ -23,10 +23,16 @@ namespace T5_Hospital.Controllers
         /// <returns>it returns a list of news (NewsDto)</returns>
         // GET: api/NewsData/ListNews
         [HttpGet]
-        public IEnumerable<NewsDto> ListNews()
+        public IEnumerable<NewsDto> ListNews(string NewsSearch = null)
         {
             List<News> NewsList = db.News.ToList();
             List<NewsDto> NewsDtoList = new List<NewsDto>();
+
+            if (NewsSearch != null)
+                NewsList = db.News.Where(News => News.NewsTitle == NewsSearch).ToList();
+            else
+                NewsList = db.News.ToList();
+
             NewsList.ForEach(news =>
             NewsDtoList.Add(new NewsDto()
             {

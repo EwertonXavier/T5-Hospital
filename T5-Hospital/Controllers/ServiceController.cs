@@ -23,9 +23,15 @@ namespace T5_Hospital.Controllers
 
         [Authorize]
         // GET: Service
-        public ActionResult List()
+        public ActionResult List(string ServiceSearch = null)
         {
             string url = "ServiceData/ListServices";
+
+            if (ServiceSearch != null)
+            {
+                url += "?ServiceSearch=" + ServiceSearch;
+            }
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<ServiceDto> services = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
             return View(services);

@@ -23,10 +23,16 @@ namespace T5_Hospital.Controllers
         /// <returns>Returns a list of Services</returns>
         // GET: api/ServiceData/ListServices
         [HttpGet]
-        public IEnumerable<ServiceDto> ListServices()
+        public IEnumerable<ServiceDto> ListServices(string ServiceSearch = null)
         {
             List<Service> ServiceList = db.Services.ToList();
             List<ServiceDto> ServiceDtoList = new List<ServiceDto>();
+
+            if (ServiceSearch != null)
+                ServiceList = db.Services.Where(Service => Service.ServiceName == ServiceSearch).ToList();
+            else
+                ServiceList = db.Services.ToList();
+
             ServiceList.ForEach(service =>
            ServiceDtoList.Add(new ServiceDto()
            {
