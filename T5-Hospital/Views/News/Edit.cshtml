@@ -3,39 +3,56 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-<form method="post" action="/News/Edit/@Model.SelectedNews.NewsId">
-    <input type="hidden" name="NewsId" value="@Model.SelectedNews.NewsId" />
-    <div>
-        <label for="newsTitle">News Title</label>
-        <input id="newsTitle" name="NewsTitle" value="@Model.SelectedNews.NewsTitle" />
-    </div>
-    <div>
-        <label for="newsContent">Content</label>
-        <input id="newsContent" name="NewsContent" value="@Model.SelectedNews.NewsContent" />
-    </div>
-    <div>
-        <label for="newsDate">Date</label>
-        <input id="newsDate" name="NewsDate" type="date" value="@Model.SelectedNews.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
-    </div>
-    <div>
-        <label for="departmentId">Department:</label>
-        <select name="DepartmentId" id="departmentId" value="@Model.SelectedNews.DepartmentName">
-            @foreach (var department in Model.RelatedDepartments)
-            {
-                if (Model.SelectedNews.DepartmentId == department.DepartmentId)
-                {
-                    <option selected value=@department.DepartmentId> @department.DepartmentName</option>
-                }
-                else
-                {
-                    <option value=@department.DepartmentId> @department.DepartmentName</option>
-                }
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Edit News</h2>
+                <form class="form-horizontal" method="post" action="/News/Edit/@Model.SelectedNews.NewsId">
+                    <input type="hidden" name="NewsId" value="@Model.SelectedNews.NewsId" />
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsTitle">News Title</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="newsTitle" name="NewsTitle" value="@Model.SelectedNews.NewsTitle" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsContent">Content</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="newsContent" name="NewsContent" value="@Model.SelectedNews.NewsContent" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsDate">Date</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="newsDate" name="NewsDate" type="date" value="@Model.SelectedNews.NewsDate.ToUniversalTime().ToString("u").Split(' ')[0]" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="DepartmentId">Department</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="DepartmentId" id="departmentId" value="@Model.SelectedNews.DepartmentName">
 
-            }
-        </select>
+                                @foreach (var department in Model.RelatedDepartments)
+                                {
+                                    if (Model.SelectedNews.DepartmentId == department.DepartmentId)
+                                    {
+                                        <option class="form-control" selected value=@department.DepartmentId> @department.DepartmentName</option>
+                                    }
+                                    else
+                                    {
+                                        <option class="form-control" value=@department.DepartmentId> @department.DepartmentName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="btn btn-primary" type="submit" value="Update" />
+                        <a href="/News/Details/@Model.SelectedNews.NewsId" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <input class="btn btn-default" type="submit" value="Update" />
-    </div>
-</form>
+</div>

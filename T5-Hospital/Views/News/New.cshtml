@@ -3,32 +3,50 @@
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
-<form method="post" action="/News/Create">
-    <div>
-        <label for="newsTitle">News Title</label>
-        <input id="newsTitle" name="NewsTitle" />
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Add News</h2>
+                <form class="form-horizontal" action="/News/Create" method="POST">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsTitle">News Title</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="newsTitle" name="NewsTitle" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsContent">News Content</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" id="newsContent" name="NewsContent" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="newsDate">News Date</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="date" id="newsDate" name="NewsDate" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="DepartmentId">Department</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="DepartmentId" required>
+                                @foreach (var department in Model)
+                                {
+                                    <option class="form-control" value="@department.DepartmentId">@department.DepartmentName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <a href="/News/List" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="newsContent">News Content</label>
-        <input id="newsContent" name="NewsContent" />
-    </div>
-    <div>
-        <label for="newsDate">Date</label>
-        <input type="date" id="newsDate" name="NewsDate" />
-    </div>
-    <div>
-        <label for="departmentId">Department:</label>
-        <select name="DepartmentId" id="departmentId">
-            @foreach (var department in Model)
-            {
-                <option value="@department.DepartmentId">@department.DepartmentName</option>
+</div>
 
-            }
-        </select>
-
-    </div>
-    <div>
-        <input class="btn btn-default" type="submit" value="Submit" />
-    </div>
-</form>
