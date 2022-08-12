@@ -22,10 +22,20 @@ namespace T5_Hospital.Controllers
         /// <returns>it returns a list of careers (CareerDto)</returns>
         // GET: api/CareerData/ListCareers
         [HttpGet]
-        public IEnumerable<CareerDto> ListCareers()
+        public IEnumerable<CareerDto> ListCareers(string careerSearch = null)
         {
             List<Career> CareerList = db.Careers.ToList();
             List<CareerDto> CareerDtoList = new List<CareerDto>();
+
+            if(careerSearch != null)
+            {
+                CareerList = db.Careers.Where(c => c.Title.Contains(careerSearch)).ToList();
+            }
+            else
+            {
+                CareerList = db.Careers.ToList();
+            }
+
             CareerList.ForEach(career => CareerDtoList.Add(new CareerDto()
             {
                 JobId = career.JobId,

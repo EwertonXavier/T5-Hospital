@@ -536,7 +536,7 @@
             <param name="id">Appointment ID</param>
             <returns>StatusCode</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.CareerDataController.ListCareers">
+        <member name="M:T5_Hospital.Controllers.CareerDataController.ListCareers(System.String)">
             <summary>
             Retrieves all careers from Careers table and list them all
             </summary>
@@ -578,7 +578,7 @@
             <param name="id">Career Id.</param>
             <returns>Delete career from db</returns>
         </member>
-        <member name="M:T5_Hospital.Controllers.DepartmentDataController.ListDepartments">
+        <member name="M:T5_Hospital.Controllers.DepartmentDataController.ListDepartments(System.String)">
             <summary>
             Retrieves all departments from Departments table and list them all
             </summary>

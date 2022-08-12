@@ -38,13 +38,13 @@
                 <h2 class="list-group-item-heading text-center">Services</h2>
                 <div class="list-group-item-text">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 my-2">
                             @foreach (var service in Model.Services)
                             {
                             <a target="_blank" href="/Service/Details/@service.ServiceId">@service.ServiceName</a><br />
                             }
                         </div>
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 my-2 text-center">
                             <a href="/Service/New">New Service</a>
                         </div>
                     </div>
@@ -62,13 +62,13 @@
                 <h2 class="list-group-item-heading text-center">Staffs</h2>
                 <div class="list-group-item-text">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 my-2">
                             @foreach (var staff in Model.Staffs)
                             {
                             <a target="_blank" href="/Staff/Details/@staff.Id">@staff.Name</a><br />
                             }
                         </div>
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 my-2 text-center">
                             <a href="/Staff/New">New Staff</a>
                         </div>
                     </div>
@@ -85,13 +85,13 @@
                 <h2 class="list-group-item-heading text-center">News</h2>
                 <div class="list-group-item-text">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 my-2">
                             @foreach (var news in Model.News)
                             {
                             <a target="_blank" href="/News/Details/@news.NewsId">@news.NewsTitle</a><br />
                             }
                         </div>
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 my-2 text-center">
                             <a href="/News/New">New News</a>
                         </div>
                     </div>
@@ -108,13 +108,13 @@
                 <h2 class="list-group-item-heading text-center">Donations</h2>
                 <div class="list-group-item-text">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 my-2">
                             @foreach (var donation in Model.Donations)
                             {
                                 <a target="_blank" href="/Donation/Details/@donation.DonationId">@donation.DonationAmount on @donation.DonationDate</a><br />
                             }
                         </div>
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 my-2 text-center">
                             <a href="/Donation/New">New Donation</a>
                         </div>
                     </div>
@@ -132,13 +132,13 @@
                 <h2 class="list-group-item-heading text-center">Careers</h2>
                 <div class="list-group-item-text">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 my-2">
                             @foreach (var career in Model.Careers)
                             {
                                 <a target="_blank" href="/Career/Details/@career.JobId">@career.JobTitle</a><br />
                             }
                         </div>
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 my-2 text-center">
                             <a href="/Career/New">New Career</a>
                         </div>
                     </div>

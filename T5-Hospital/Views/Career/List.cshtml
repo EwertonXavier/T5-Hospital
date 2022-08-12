@@ -3,9 +3,16 @@
     ViewBag.Title = "List";
 }
 
-<h2>Career List</h2>
+<h2>Careers List</h2>
 <div>
     <a class="btn btn-primary" href="/Career/New">Add Career</a>
+    <a class="btn btn-success" href="/Department/List">View Departments</a>
+</div>
+<div class="text-center my-2">
+    <form action="/Career/List" method="get">
+        <input type="text" placeholder="Search Career..." name="CareerSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
 </div>
 
 <table class="table table-hover text-center">
@@ -15,7 +22,7 @@
             <th class="text-center">Job Description</th>
             <th class="text-center">Experience Required (In Years)</th>
             <th class="text-center">Department</th>
-            <th colspan="2">Controls</th>
+            <th class="text-center" colspan="2">Controls</th>
         </tr>
     </thead>
     <tbody>

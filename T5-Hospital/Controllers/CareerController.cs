@@ -23,9 +23,13 @@ namespace T5_Hospital.Controllers
 
         // GET: Career
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(string CareerSearch = null)
         {
             string url = "CareerData/ListCareers";
+
+            if (CareerSearch != null)
+                url += $"?CareerSearch={CareerSearch}";
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<CareerDto> careers = response.Content.ReadAsAsync<IEnumerable<CareerDto>>().Result;
             return View(careers);

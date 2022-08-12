@@ -22,10 +22,20 @@ namespace T5_Hospital.Controllers
         /// <returns>it returns a list of departments (DepartmentsDto)</returns>
         // GET: api/DepartmentData/ListDepartments
         [HttpGet]
-        public IEnumerable<DepartmentDto> ListDepartments()
+        public IEnumerable<DepartmentDto> ListDepartments(string departmentSearch = null)
         {
             List<Department> DepartmentList = db.Departments.ToList();
             List<DepartmentDto> DepartmentDtoList = new List<DepartmentDto>();
+            
+            if(departmentSearch != null)
+            {
+                DepartmentList = db.Departments.Where(d => d.Name.Contains(departmentSearch)).ToList();
+            }
+            else
+            {
+                DepartmentList = db.Departments.ToList();
+            }
+
             DepartmentList.ForEach(department => DepartmentDtoList.Add(new DepartmentDto()
             {
                 DepartmentId = department.DepartmentId,

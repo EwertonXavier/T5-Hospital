@@ -3,39 +3,59 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Career</h2>
-<form method="post" action="/Career/Edit/@Model.SelectedCareer.JobId">
-    <input type="hidden" name="JobId" value="@Model.SelectedCareer.JobId" />
-    <div>
-        <label for="jobTitle">Job Title</label>
-        <input id="jobTitle" name="Title" value="@Model.SelectedCareer.JobTitle" />
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="list-group-item-heading text-center">Edit Career</h2>
+                <form class="form-horizontal" action="/Career/Edit/@Model.SelectedCareer.JobId" method="POST">
+                    <div style="display:none;">
+                        <input type="text" name="JobId" value="@Model.SelectedCareer.JobId" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="jobTitle">Job Title</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" id="jobTitle" name="Title" value="@Model.SelectedCareer.JobTitle" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="jobDescription">Job Description</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" id="jobDescription" name="Description" value="@Model.SelectedCareer.JobDescription" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="experienceInYears">Experience required (in years)</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" id="experienceInYears" name="Experience_In_Years" value="@Model.SelectedCareer.Experience_In_Years" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" for="departmentId">Department</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="DepartmentId" id="departmentId" required>
+                                @foreach (var department in Model.DepartmentList)
+                                {
+                                    if (Model.SelectedCareer.DepartmentId == department.DepartmentId)
+                                    {
+                                        <option selected class="form-control" value="@department.DepartmentId">@department.DepartmentName</option>
+                                    }
+                                    else
+                                    {
+                                        <option class="form-control" value="@department.DepartmentId">@department.DepartmentName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <a href="/Career/Details/@Model.SelectedCareer.JobId" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="jobDescription">Job Description</label>
-        <input id="jobDescription" name="Description" value="@Model.SelectedCareer.JobDescription" />
-    </div>
-    <div>
-        <label for="experienceInYears">Experience required (in years)</label>
-        <input id="experienceInYears" name="Experience_In_Years" value="@Model.SelectedCareer.Experience_In_Years" />
-    </div>
-    <div>
-        <label for="department">Department: </label>
-        <select name="DepartmentId" id="department" value="@Model.SelectedCareer.DepartmentName">
-            @foreach (var department in Model.DepartmentList)
-            {
-                if (Model.SelectedCareer.DepartmentId == department.DepartmentId)
-                {
-                    <option selected value=@department.DepartmentId> @department.DepartmentName</option>
-                }
-                else
-                {
-                    <option value=@department.DepartmentId> @department.DepartmentName</option>
-                }
-
-            }
-        </select>
-    </div>
-    <div>
-        <input class="btn btn-default" type="submit" value="Update" />
-    </div>
-</form>
+</div>

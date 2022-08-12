@@ -23,9 +23,13 @@ namespace T5_Hospital.Controllers
 
         // GET: Department
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(string DepartmentSearch)
         {
             string url = "DepartmentData/ListDepartments";
+
+            if (DepartmentSearch != null)
+                url += $"?DepartmentSearch={DepartmentSearch}";
+
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
             return View(departments);
