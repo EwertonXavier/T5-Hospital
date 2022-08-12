@@ -7,43 +7,48 @@
 
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-        <h2 class="text-center">Add Appointment</h2>
-        <form class="form-horizontal" action="/Appointment/Create" method="POST">
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="PatientId">Patient</label>
-                <div class="col-sm-8">
-                    <select name="PatientId" id="PatientId">
-                        @foreach (var patient in Model.AvailablePatient)
-                        {
-                            <option value=@patient.PatientId> @patient.FirstName @patient.LastName (id:@patient.PatientId)</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="StaffId">Staff</label>
-                <div class="col-sm-8">
-                    <select name="StaffId" id="StaffId">
-                        @foreach (var staff in Model.AvailableStaff)
-                        {
-                            <option value=@staff.Id> @staff.Name (Department:@staff.DepartmentName)</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="AppointmentDate">Appointment Date</label>
-                <div class="col-sm-8">
-                    <input id="AppointmentDate" type="datetime-local" name="AppointmentDate" />
-                </div>
-            </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                <h2 class="text-center">Add Appointment</h2>
+                <form class="form-horizontal" action="/Appointment/Create" method="POST">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="PatientId">Patient</label>
+                        <div class="col-sm-8">
+                            <select name="PatientId" id="PatientId">
+                                @foreach (var patient in Model.AvailablePatient)
+                                {
+                                    <option value=@patient.PatientId> @patient.FirstName @patient.LastName (id:@patient.PatientId)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="StaffId">Staff</label>
+                        <div class="col-sm-8">
+                            <select name="StaffId" id="StaffId">
+                                @foreach (var staff in Model.AvailableStaff)
+                                {
+                                    <option value=@staff.Id> @staff.Name (Department:@staff.DepartmentName)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="AppointmentDate">Appointment Date</label>
+                        <div class="col-sm-8">
+                            <input id="AppointmentDate" type="datetime-local" name="AppointmentDate" />
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <button class="btn btn-default" type="submit">Add Appointment</button>
-                </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button class="btn btn-default" type="submit">Add Appointment</button>
+                            <a href="/Appointment/List/" class="btn btn-primary">Cancel</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
