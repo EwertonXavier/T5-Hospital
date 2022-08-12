@@ -481,7 +481,7 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:T5_Hospital.Controllers.AppointmentDataController.ListAppointment">
+        <member name="M:T5_Hospital.Controllers.AppointmentDataController.ListAppointment(System.String)">
             <summary>
             GET: api/AppointmentData/ListAppointment
             Access the appointment table on the database to retrieve all appointments

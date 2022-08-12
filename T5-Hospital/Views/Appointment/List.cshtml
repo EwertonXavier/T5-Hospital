@@ -7,10 +7,16 @@
 <div>
     <a class="btn btn-primary" href="/Appointment/New">Add Appointment</a>
 </div>
-
+<div class="text-center my-2">
+    <form action="/Appointment/List" method="get">
+        <input type="text" placeholder="Search Patients..." name="PatientSearch" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
 <table class="table table-hover text-center">
     <thead>
         <tr>
+            <th class="text-center">Date</th>
             <th class="text-center">Staff Name</th>
             <th class="text-center">Department</th>
             <th class="text-center">Patient First Name</th>
@@ -22,6 +28,7 @@
         @foreach (var appointment in Model)
         {
             <tr>
+                <td>@appointment.AppointmentDate</td>
                 <td>@appointment.StaffName</td>
                 <td>@appointment.StaffDepartmentName</td>
                 <td>@appointment.PatientFirstName</td>

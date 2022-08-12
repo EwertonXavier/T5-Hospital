@@ -24,10 +24,16 @@ namespace T5_Hospital.Controllers
         /// </summary>
         /// <returns>List of all appointments</returns>
         [HttpGet]
-        public IEnumerable<AppointmentDto> ListAppointment()
+        public IEnumerable<AppointmentDto> ListAppointment(string PatientSearch = null)
         {
             List<Appointment> Appointments = db.Appointments.ToList();
             List<AppointmentDto> AppointmentsDto = new List<AppointmentDto>();
+
+
+            if (PatientSearch != null)
+                Appointments = db.Appointments.Where(appointment => appointment.Patient.FirstName == PatientSearch).ToList();
+            else
+                Appointments = db.Appointments.ToList();
 
             Appointments.ForEach(appointment => AppointmentsDto.Add(new AppointmentDto()
             {

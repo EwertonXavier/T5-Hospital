@@ -23,10 +23,14 @@ namespace T5_Hospital.Controllers
 
         // GET: Appointment
         [Authorize]
-        public ActionResult List()
+        public ActionResult List( string PatientSearch = null)
         {
 
             string url = "AppointmentData/ListAppointment";
+            if(PatientSearch != null)
+            {
+                url += "?PatientSearch=" + PatientSearch;
+            }
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<AppointmentDto> appointments = response.Content.ReadAsAsync<IEnumerable<AppointmentDto>>().Result;
             return View(appointments);
